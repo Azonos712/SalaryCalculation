@@ -6,7 +6,7 @@ namespace SalaryCalculation
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello Nik!");
         }
     }
 }
