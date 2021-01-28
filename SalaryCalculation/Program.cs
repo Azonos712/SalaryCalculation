@@ -6,8 +6,10 @@ namespace SalaryCalculation
     {
         static void Main()
         {
-            Console.WriteLine("Hello Nik!");
-            Console.WriteLine("Hello World!");
+            Console.Write("Доброго времени суток! Назовите вашу фамилию, пожалуйста: ");
+            var currentUser = Console.ReadLine();
+            string role = "не определена";
+            Console.WriteLine($"Добро пожаловать, {currentUser}! Ваша роль - {role}");
         }
     }
 }
