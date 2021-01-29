@@ -4,14 +4,14 @@ using System.Text;
 
 namespace SalaryCalculationLibrary
 {
-    enum Roles
+    public enum Roles
     {
         Director,
         Worker,
         Freelancer
     }
 
-    class Employee
+    public class Employee
     {
         public string Name { get; set; }
         public string Surname { get; set; }

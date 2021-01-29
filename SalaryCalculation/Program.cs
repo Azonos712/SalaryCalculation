@@ -1,4 +1,5 @@
 ﻿using System;
+using SalaryCalculationLibrary;
 
 namespace SalaryCalculation
 {
@@ -6,6 +7,7 @@ namespace SalaryCalculation
     {
         static void Main()
         {
+            Company company = new Company();
             Console.Write("Доброго времени суток! Назовите вашу фамилию, пожалуйста: ");
             var currentUser = Console.ReadLine();
             string role = "не определена";

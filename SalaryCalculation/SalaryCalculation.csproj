@@ -6,11 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Storage\" />
-    <Folder Include="Model\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SalaryCalculationLibrary\SalaryCalculationLibrary.csproj" />
   </ItemGroup>
 

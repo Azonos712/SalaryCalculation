@@ -1,0 +1,149 @@
+[1mdiff --git a/.vs/SalaryCalculation/v16/.suo b/.vs/SalaryCalculation/v16/.suo[m
+[1mindex cd5ac38..fb4c72f 100644[m
+Binary files a/.vs/SalaryCalculation/v16/.suo and b/.vs/SalaryCalculation/v16/.suo differ
+[1mdiff --git a/.vs/SalaryCalculation/v16/TestStore/0/000.testlog b/.vs/SalaryCalculation/v16/TestStore/0/000.testlog[m
+[1mindex 8788ce7..8cfbe0e 100644[m
+Binary files a/.vs/SalaryCalculation/v16/TestStore/0/000.testlog and b/.vs/SalaryCalculation/v16/TestStore/0/000.testlog differ
+[1mdiff --git a/SalaryCalculation/Program.cs b/SalaryCalculation/Program.cs[m
+[1mindex 358fef9..a7b7176 100644[m
+[1m--- a/SalaryCalculation/Program.cs[m
+[1m+++ b/SalaryCalculation/Program.cs[m
+[36m@@ -1,4 +1,5 @@[m
+ ﻿using System;[m
+[32m+[m[32musing SalaryCalculationLibrary;[m
+ [m
+ namespace SalaryCalculation[m
+ {[m
+[36m@@ -6,6 +7,7 @@[m [mnamespace SalaryCalculation[m
+     {[m
+         static void Main()[m
+         {[m
+[32m+[m[32m            Company company = new Company();[m
+             Console.Write("Доброго времени суток! Назовите вашу фамилию, пожалуйста: ");[m
+             var currentUser = Console.ReadLine();[m
+             string role = "не определена";[m
+[1mdiff --git a/SalaryCalculation/SalaryCalculation.csproj b/SalaryCalculation/SalaryCalculation.csproj[m
+[1mindex d6b45a5..e152761 100644[m
+[1m--- a/SalaryCalculation/SalaryCalculation.csproj[m
+[1m+++ b/SalaryCalculation/SalaryCalculation.csproj[m
+[36m@@ -5,11 +5,6 @@[m
+     <TargetFramework>netcoreapp3.1</TargetFramework>[m
+   </PropertyGroup>[m
+ [m
+[31m-  <ItemGroup>[m
+[31m-    <Folder Include="Storage\" />[m
+[31m-    <Folder Include="Model\" />[m
+[31m-  </ItemGroup>[m
+[31m-[m
+   <ItemGroup>[m
+     <ProjectReference Include="..\SalaryCalculationLibrary\SalaryCalculationLibrary.csproj" />[m
+   </ItemGroup>[m
+[1mdiff --git a/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculation.dll b/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculation.dll[m
+[1mindex c59c5e0..04f6376 100644[m
+Binary files a/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculation.dll and b/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculation.dll differ
+[1mdiff --git a/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculation.pdb b/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculation.pdb[m
+[1mindex 9b5ad2a..8e86e95 100644[m
+Binary files a/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculation.pdb and b/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculation.pdb differ
+[1mdiff --git a/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculationLibrary.dll b/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculationLibrary.dll[m
+[1mindex 5c94e78..cd317ec 100644[m
+Binary files a/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculationLibrary.dll and b/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculationLibrary.dll differ
+[1mdiff --git a/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculationLibrary.pdb b/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculationLibrary.pdb[m
+[1mindex 50481bb..f859ebf 100644[m
+Binary files a/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculationLibrary.pdb and b/SalaryCalculation/bin/Debug/netcoreapp3.1/SalaryCalculationLibrary.pdb differ
+[1mdiff --git a/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.csproj.CoreCompileInputs.cache b/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.csproj.CoreCompileInputs.cache[m
+[1mindex 59bd596..a4b0a0f 100644[m
+[1m--- a/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.csproj.CoreCompileInputs.cache[m
+[1m+++ b/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.csproj.CoreCompileInputs.cache[m
+[36m@@ -1 +1 @@[m
+[31m-90f853df316635e54b4cfa53cc90756d27c90a41[m
+[32m+[m[32md0fc508e0b14356be4172716bdf93d2cd504dd1c[m
+[1mdiff --git a/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.csprojAssemblyReference.cache b/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.csprojAssemblyReference.cache[m
+[1mindex 3f75d0e..e54d5ce 100644[m
+Binary files a/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.csprojAssemblyReference.cache and b/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.csprojAssemblyReference.cache differ
+[1mdiff --git a/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.dll b/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.dll[m
+[1mindex c59c5e0..04f6376 100644[m
+Binary files a/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.dll and b/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.dll differ
+[1mdiff --git a/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.pdb b/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.pdb[m
+[1mindex 9b5ad2a..8e86e95 100644[m
+Binary files a/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.pdb and b/SalaryCalculation/obj/Debug/netcoreapp3.1/SalaryCalculation.pdb differ
+[1mdiff --git a/SalaryCalculationLibrary/Model/Employee.cs b/SalaryCalculationLibrary/Model/Employee.cs[m
+[1mindex 0dc50d6..bfc6c57 100644[m
+[1m--- a/SalaryCalculationLibrary/Model/Employee.cs[m
+[1m+++ b/SalaryCalculationLibrary/Model/Employee.cs[m
+[36m@@ -4,14 +4,14 @@[m [musing System.Text;[m
+ [m
+ namespace SalaryCalculationLibrary[m
+ {[m
+[31m-    enum Roles[m
+[32m+[m[32m    public enum Roles[m
+     {[m
+         Director,[m
+         Worker,[m
+         Freelancer[m
+     }[m
+ [m
+[31m-    class Employee[m
+[32m+[m[32m    public class Employee[m
+     {[m
+         public string Name { get; set; }[m
+         public string Surname { get; set; }[m
+[1mdiff --git a/SalaryCalculationLibrary/Storage/Company.cs b/SalaryCalculationLibrary/Storage/Company.cs[m
+[1mindex 700ab31..8f52ee3 100644[m
+[1m--- a/SalaryCalculationLibrary/Storage/Company.cs[m
+[1m+++ b/SalaryCalculationLibrary/Storage/Company.cs[m
+[36m@@ -1,10 +1,32 @@[m
+ ﻿using System;[m
+ using System.Collections.Generic;[m
+[32m+[m[32musing System.IO;[m
+ using System.Text;[m
+ [m
+ namespace SalaryCalculationLibrary[m
+ {[m
+[31m-    class Company[m
+[32m+[m[32m    public class Company[m
+     {[m
+[32m+[m[32m        public Company()[m
+[32m+[m[32m        {[m
+[32m+[m[32m            CheckStorage();[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        private void CheckStorage()[m
+[32m+[m[32m        {[m
+[32m+[m[32m            string curDir = Directory.GetCurrentDirectory();[m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m        //public Employee[] GetListOfEmployees()[m
+[32m+[m[32m        //{[m
+[32m+[m[32m        //    var list = new Employee[5];[m
+[32m+[m[32m        //    return list;[m
+[32m+[m[32m        //}[m
+[32m+[m
+[32m+[m[32m        //public Employee[] GetListByEmployeesRole(Roles role)[m
+[32m+[m[32m        //{[m
+[32m+[m[32m        //    var list = new Employee[5];[m
+[32m+[m[32m        //    return list;[m
+[32m+[m[32m        //}[m
+     }[m
+ }[m
+[1mdiff --git a/SalaryCalculationLibrary/bin/Debug/netstandard2.0/SalaryCalculationLibrary.dll b/SalaryCalculationLibrary/bin/Debug/netstandard2.0/SalaryCalculationLibrary.dll[m
+[1mindex 5c94e78..cd317ec 100644[m
+Binary files a/SalaryCalculationLibrary/bin/Debug/netstandard2.0/SalaryCalculationLibrary.dll and b/SalaryCalculationLibrary/bin/Debug/netstandard2.0/SalaryCalculationLibrary.dll differ
+[1mdiff --git a/SalaryCalculationLibrary/bin/Debug/netstandard2.0/SalaryCalculationLibrary.pdb b/SalaryCalculationLibrary/bin/Debug/netstandard2.0/SalaryCalculationLibrary.pdb[m
+[1mindex 50481bb..f859ebf 100644[m
+Binary files a/SalaryCalculationLibrary/bin/Debug/netstandard2.0/SalaryCalculationLibrary.pdb and b/SalaryCalculationLibrary/bin/Debug/netstandard2.0/SalaryCalculationLibrary.pdb differ
+[1mdiff --git a/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.csproj.CoreCompileInputs.cache b/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.csproj.CoreCompileInputs.cache[m
+[1mindex b28cdc1..2e0e7f9 100644[m
+[1m--- a/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.csproj.CoreCompileInputs.cache[m
+[1m+++ b/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.csproj.CoreCompileInputs.cache[m
+[36m@@ -1 +1 @@[m
+[31m-38c025a3446431ca996e763643fb856f3d294bca[m
+[32m+[m[32maaa2133e0e54f5bce53ed6bfb36a173e92a94a6e[m
+[1mdiff --git a/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.csprojAssemblyReference.cache b/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.csprojAssemblyReference.cache[m
+[1mindex 38bec5f..ce561e7 100644[m
+Binary files a/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.csprojAssemblyReference.cache and b/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.csprojAssemblyReference.cache differ
+[1mdiff --git a/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.dll b/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.dll[m
+[1mindex 5c94e78..cd317ec 100644[m
+Binary files a/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.dll and b/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.dll differ
+[1mdiff --git a/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.pdb b/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.pdb[m
+[1mindex 50481bb..f859ebf 100644[m
+Binary files a/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.pdb and b/SalaryCalculationLibrary/obj/Debug/netstandard2.0/SalaryCalculationLibrary.pdb differ
