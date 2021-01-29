@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalaryCalculation", "SalaryCalculation\SalaryCalculation.csproj", "{BD2ADBC0-0B4A-4462-B5FB-4626905F32F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SalaryCalculation", "SalaryCalculation\SalaryCalculation.csproj", "{BD2ADBC0-0B4A-4462-B5FB-4626905F32F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalaryCalculationTests", "SalaryCalculationTests\SalaryCalculationTests.csproj", "{94CF1FC7-903F-49AF-8165-0809BC91F4C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalaryCalculationLibrary", "SalaryCalculationLibrary\SalaryCalculationLibrary.csproj", "{F55B83CF-C977-45AD-8969-7338197042D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{BD2ADBC0-0B4A-4462-B5FB-4626905F32F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD2ADBC0-0B4A-4462-B5FB-4626905F32F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD2ADBC0-0B4A-4462-B5FB-4626905F32F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94CF1FC7-903F-49AF-8165-0809BC91F4C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94CF1FC7-903F-49AF-8165-0809BC91F4C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94CF1FC7-903F-49AF-8165-0809BC91F4C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94CF1FC7-903F-49AF-8165-0809BC91F4C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F55B83CF-C977-45AD-8969-7338197042D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F55B83CF-C977-45AD-8969-7338197042D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F55B83CF-C977-45AD-8969-7338197042D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F55B83CF-C977-45AD-8969-7338197042D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

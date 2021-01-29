@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SalaryCalculation
+namespace SalaryCalculationLibrary
 {
     enum Roles
     {
