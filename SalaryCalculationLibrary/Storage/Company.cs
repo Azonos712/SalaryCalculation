@@ -48,6 +48,11 @@ namespace SalaryCalculationLibrary
             return null;
         }
 
+        public void AddNewEmployee(string surname, string role)
+        {
+            throw new NotImplementedException();
+        }
+
         //public Employee[] GetListOfEmployees()
         //{
         //    var list = new Employee[5];
