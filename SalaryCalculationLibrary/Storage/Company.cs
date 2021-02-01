@@ -7,24 +7,45 @@ namespace SalaryCalculationLibrary
 {
     public class Company
     {
+        string companyName;
+        string storageDirectory;
         readonly string[] namesOfLists = { "\\listOfAllEmployes.csv", "\\listOfDirectors.csv", "\\listOfWorkers.csv", "\\listOfFreelancers.csv" };
-
-        public Company()
+        public Company(string name)
         {
+            companyName = name;
+            storageDirectory = Directory.GetCurrentDirectory() + "\\" + companyName;
             CheckStorage();
         }
 
         private void CheckStorage()
         {
-            string currentDir = Directory.GetCurrentDirectory();
+            if (!Directory.Exists(storageDirectory))
+                Directory.CreateDirectory(storageDirectory);
+
             foreach (var file in namesOfLists)
             {
-                string currentFile = currentDir + file;
+                string currentFile = storageDirectory + file;
+
                 if (!File.Exists(currentFile))
-                {
                     File.Create(currentFile);
+            }
+        }
+
+        public Employee FindEmployeeBySurname(string surname)
+        {
+            string line;
+            using (StreamReader sr = new StreamReader(storageDirectory + namesOfLists[0]))
+            {
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] sLine = line.Split(',');
+                    if (sLine[0] == surname)
+                    {
+                        return new Employee(sLine[0], sLine[1]);
+                    }
                 }
             }
+            return null;
         }
 
         //public Employee[] GetListOfEmployees()
