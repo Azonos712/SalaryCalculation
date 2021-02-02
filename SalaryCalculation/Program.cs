@@ -136,6 +136,9 @@ namespace SalaryCalculation
             if (!result2)
                 return false;
 
+            if (date > DateTime.Now)
+                return false;
+
             Console.Write("Дополнительное описание:");
             string description = Console.ReadLine().ToLower();
 
@@ -150,6 +153,7 @@ namespace SalaryCalculation
             Console.Write("Должность добавляемого сотрудника:");
             string role = Console.ReadLine();
             Console.WriteLine();
+
             Employee newEmployee = company.CreateEmployeeByRole(surname.ToLower(), role.ToLower());
             return company.AddNewEmployee(newEmployee);
         }

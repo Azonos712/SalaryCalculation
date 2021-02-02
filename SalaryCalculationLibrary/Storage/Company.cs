@@ -87,12 +87,35 @@ namespace SalaryCalculationLibrary
         {
             Employee employee = jr.WorkPerson;
 
+            if (employee is Freelancer && DateTime.Today.AddDays(-2) > jr.WorkDay)
+                return false;
+
             using (StreamWriter sw = new StreamWriter(storageDirectory + employee.DataFileName, true, System.Text.Encoding.Default))
             {
                 sw.WriteLine(jr.WorkDay.ToString("d") + "," + employee.Surname + "," + jr.Hours + "," + jr.Description);
             }
 
             return true;
+        }
+
+        public JobReport FindJobReportBySurnameAndDate(Employee employee, DateTime date)
+        {
+            string line;
+            using (StreamReader sr = new StreamReader(storageDirectory + employee.DataFileName))
+            {
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] sLine = line.Split(',');
+                    if (sLine[0] == date.ToString("d"))
+                    {
+                        if (sLine[1] == employee.Surname)
+                        {
+                            return new JobReport(employee, byte.Parse(sLine[2]), date, sLine[3]);
+                        }
+                    }
+                }
+            }
+            return null;
         }
     }
 }
