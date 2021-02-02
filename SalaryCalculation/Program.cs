@@ -30,6 +30,7 @@ namespace SalaryCalculation
 
             while (true)
             {
+                Console.WriteLine();
                 Console.WriteLine("Выберите желаемое действие:");
                 ShowMenu(currentEmployee);
                 Console.Write("Напишите номер действия:");
@@ -41,6 +42,7 @@ namespace SalaryCalculation
                     continue;
                 }
 
+                Console.WriteLine();
                 DoMenuItem(currentEmployee, company, numOfItem);
             }
 
@@ -76,20 +78,17 @@ namespace SalaryCalculation
                 switch (numOfItem)
                 {
                     case 1:
-                        Console.Write("Фамилия добавляемого сотрудника:");
-                        string surname = Console.ReadLine();
-                        Console.WriteLine();
-                        Console.Write("Должность добавляемого сотрудника:");
-                        string role = Console.ReadLine();
-                        Console.WriteLine();
-                        Employee newEmployee = company.CreateEmployeeByRole(surname, role);
-                        bool result = company.AddNewEmployee(newEmployee);
-                        Console.WriteLine(GetStringByResult(result));
+                        AddEmployee(company);
                         break;
                     case 2:
+                        break;
                     case 3:
+                        break;
                     case 4:
+                        break;
                     case 5:
+                        Exit();
+                        break;
                     default:
                         break;
                 }
@@ -99,8 +98,12 @@ namespace SalaryCalculation
                 switch (numOfItem)
                 {
                     case 1:
+                        break;
                     case 2:
+                        break;
                     case 3:
+                        Exit();
+                        break;
                     default:
                         break;
                 }
@@ -111,6 +114,20 @@ namespace SalaryCalculation
             }
         }
 
+        private static void Exit() => Environment.Exit(0);
+
+        private static void AddEmployee(Company c)
+        {
+            Console.Write("Фамилия добавляемого сотрудника:");
+            string surname = Console.ReadLine();
+            Console.Write("Должность добавляемого сотрудника:");
+            string role = Console.ReadLine();
+            Console.WriteLine();
+            Employee newEmployee = c.CreateEmployeeByRole(surname.ToLower(), role.ToLower());
+            bool result = c.AddNewEmployee(newEmployee);
+            Console.WriteLine(GetStringByResult(result));
+        }
+
         private static string GetStringByResult(bool result)
         {
             if (result)
@@ -119,9 +136,6 @@ namespace SalaryCalculation
                 return "Произошла ошибка, действие не выполнено.";
         }
 
-        static string FirstCharToUpper(string s)
-        {
-            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(s);
-        }
+        static string FirstCharToUpper(string s) => CultureInfo.CurrentCulture.TextInfo.ToTitleCase(s);
     }
 }
