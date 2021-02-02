@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SalaryCalculationLibrary
+namespace SalaryCalculationLibrary.Model
 {
     class JobReport
     {

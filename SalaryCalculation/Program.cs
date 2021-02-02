@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using SalaryCalculationLibrary;
+using SalaryCalculationLibrary.Model;
 
 namespace SalaryCalculation
 {
@@ -24,7 +25,8 @@ namespace SalaryCalculation
 
                 Console.Write("Такого сотрудника не найдено! Попробуйте повторить ввод: ");
             }
-            Console.WriteLine($"Добро пожаловать, {FirstCharToUpper(currentEmployee.Surname)}! Ваша роль - {currentEmployee.RoleToStr()}");
+
+            Console.WriteLine($"Добро пожаловать, {FirstCharToUpper(currentEmployee.Surname)}! Ваша роль - {currentEmployee.RoleToStr}");
 
             while (true)
             {
@@ -45,68 +47,75 @@ namespace SalaryCalculation
             Console.ReadKey();
         }
 
-        private static void DoMenuItem(Employee employee, Company company, int numOfItem)
+        private static void ShowMenu(Employee employee)
         {
-            switch (employee.Role)
+            if(employee is Director)
             {
-                case Roles.Director:
-                    switch (numOfItem)
-                    {
-                        case 1:
-                            Console.Write("Фамилия добавляемого сотрудника:");
-                            string surname = Console.ReadLine();
-                            Console.WriteLine();
-                            Console.Write("Должность добавляемого сотрудника:");
-                            string role = Console.ReadLine();
-                            Console.WriteLine();
-                            company.AddNewEmployee(surname, role);
-                            break;
-                        case 2:
-                        case 3:
-                        case 4:
-                        case 5:
-                        default:
-                            break;
-                    }
-                    break;
-                case Roles.Worker:
-                case Roles.Freelancer:
-                    switch (numOfItem)
-                    {
-                        case 1:
-                        case 2:
-                        case 3:
-                        default:
-                            break;
-                    }
-                    break;
-                default:
-                    Console.WriteLine("У вас нет прав просматривать данный раздел!\n");
-                    break;
+                Console.WriteLine("(1). Добавить сотрудника\n");
+                Console.WriteLine("(2). Просмотреть отчёт по всем сотрудникам\n");
+                Console.WriteLine("(3). Просмотреть отчёт по конкретному сотруднику\n");
+                Console.WriteLine("(4). Добавить часы работы\n");
+                Console.WriteLine("(5). Выход из программы\n");
+            }
+            else if (employee is Worker || employee is Freelancer)
+            {
+                Console.WriteLine("(1). Добавить отработанные часы\n");
+                Console.WriteLine("(2). Просмотр отработанных часов и зарплаты\n");
+                Console.WriteLine("(3). Выход из программы\n");
+            }
+            else
+            {
+                Console.WriteLine("У вас нет прав просматривать данный раздел!\n");
             }
         }
 
-        private static void ShowMenu(Employee employee)
+        private static void DoMenuItem(Employee employee, Company company, int numOfItem)
         {
-            switch (employee.Role)
+            if (employee is Director)
             {
-                case Roles.Director:
-                    Console.WriteLine("(1). Добавить сотрудника\n");
-                    Console.WriteLine("(2). Просмотреть отчёт по всем сотрудникам\n");
-                    Console.WriteLine("(3). Просмотреть отчёт по конкретному сотруднику\n");
-                    Console.WriteLine("(4). Добавить часы работы\n");
-                    Console.WriteLine("(5). Выход из программы\n");
-                    break;
-                case Roles.Worker:
-                case Roles.Freelancer:
-                    Console.WriteLine("(1). Добавить отработанные часы\n");
-                    Console.WriteLine("(2). Просмотр отработанных часов и зарплаты\n");
-                    Console.WriteLine("(3). Выход из программы\n");
-                    break;
-                default:
-                    Console.WriteLine("У вас нет прав просматривать данный раздел!\n");
-                    break;
+                switch (numOfItem)
+                {
+                    case 1:
+                        Console.Write("Фамилия добавляемого сотрудника:");
+                        string surname = Console.ReadLine();
+                        Console.WriteLine();
+                        Console.Write("Должность добавляемого сотрудника:");
+                        string role = Console.ReadLine();
+                        Console.WriteLine();
+                        bool result = company.AddNewEmployee(surname, role);
+                        Console.WriteLine(GetStringByResult(result));
+                        break;
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    default:
+                        break;
+                }
             }
+            else if (employee is Worker || employee is Freelancer)
+            {
+                switch (numOfItem)
+                {
+                    case 1:
+                    case 2:
+                    case 3:
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("У вас нет прав просматривать данный раздел!\n");
+            }
+        }
+
+        private static string GetStringByResult(bool result)
+        {
+            if (result)
+                return "Действие успешно выполнено.";
+            else
+                return "Произошла ошибка, действие не выполнено.";
         }
 
         static string FirstCharToUpper(string s)

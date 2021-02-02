@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalaryCalculationLibrary.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -41,14 +42,24 @@ namespace SalaryCalculationLibrary
                     string[] sLine = line.Split(',');
                     if (sLine[0] == surname)
                     {
-                        return new Employee(sLine[0], sLine[1]);
+                        switch (sLine[1])
+                        {
+                            case "сотрудник":
+                                return new Worker(sLine[0]);
+                            case "руководитель":
+                                return new Director(sLine[0]);
+                            case "фрилансер":
+                                return new Freelancer(sLine[0]);
+                            default:
+                                return null;
+                        }
                     }
                 }
             }
             return null;
         }
 
-        public void AddNewEmployee(string surname, string role)
+        public bool AddNewEmployee(string surname, string role)
         {
             throw new NotImplementedException();
         }
