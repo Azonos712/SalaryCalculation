@@ -9,6 +9,7 @@ namespace SalaryCalculationLibrary.Model
     {
         public string Surname { get; set; }
         public abstract string RoleToStr { get; }
+        public abstract string DataFileName { get; }
 
         public Employee(string surname)
         {

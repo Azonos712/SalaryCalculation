@@ -7,32 +7,32 @@ namespace SalaryCalculation
 {
     class Program
     {
-
+        static Company company;
+        static Employee currentUser;
         static void Main()
         {
-            Company company = new Company("SoftwareDevelopment");
-            Employee currentEmployee = null;
+            company = new Company("SoftwareDevelopment");
 
             Console.Write("Доброго времени суток! Назовите вашу фамилию, пожалуйста: ");
 
             while (true)
             {
                 var surname = Console.ReadLine().Trim().ToLower();
-                currentEmployee = company.FindEmployeeBySurname(surname);
+                currentUser = company.FindEmployeeBySurname(surname);
 
-                if (currentEmployee != null)
+                if (currentUser != null)
                     break;
 
                 Console.Write("Такого сотрудника не найдено! Попробуйте повторить ввод: ");
             }
 
-            Console.WriteLine($"Добро пожаловать, {FirstCharToUpper(currentEmployee.Surname)}! Ваша роль - {currentEmployee.RoleToStr}");
+            Console.WriteLine($"Добро пожаловать, {FirstCharToUpper(currentUser.Surname)}! Ваша роль - {currentUser.RoleToStr}");
 
             while (true)
             {
                 Console.WriteLine();
                 Console.WriteLine("Выберите желаемое действие:");
-                ShowMenu(currentEmployee);
+                ShowMenu();
                 Console.Write("Напишите номер действия:");
 
                 bool result = int.TryParse(Console.ReadLine().Trim(), out int numOfItem);
@@ -43,15 +43,14 @@ namespace SalaryCalculation
                 }
 
                 Console.WriteLine();
-                DoMenuItem(currentEmployee, company, numOfItem);
+                DoMenuItem(numOfItem);
             }
-
-            Console.ReadKey();
         }
+        static string FirstCharToUpper(string s) => CultureInfo.CurrentCulture.TextInfo.ToTitleCase(s);
 
-        private static void ShowMenu(Employee employee)
+        private static void ShowMenu()
         {
-            if(employee is Director)
+            if(currentUser is Director)
             {
                 Console.WriteLine("(1). Добавить сотрудника");
                 Console.WriteLine("(2). Просмотреть отчёт по всем сотрудникам");
@@ -59,7 +58,7 @@ namespace SalaryCalculation
                 Console.WriteLine("(4). Добавить часы работы");
                 Console.WriteLine("(5). Выход из программы");
             }
-            else if (employee is Worker || employee is Freelancer)
+            else if (currentUser is Worker || currentUser is Freelancer)
             {
                 Console.WriteLine("(1). Добавить отработанные часы");
                 Console.WriteLine("(2). Просмотр отработанных часов и зарплаты");
@@ -71,14 +70,15 @@ namespace SalaryCalculation
             }
         }
 
-        private static void DoMenuItem(Employee employee, Company company, int numOfItem)
+        private static void DoMenuItem(int numOfItem)
         {
-            if (employee is Director)
+            bool result = false;
+            if (currentUser is Director)
             {
                 switch (numOfItem)
                 {
                     case 1:
-                        AddEmployee(company);
+                        result = AddEmployee();
                         break;
                     case 2:
                         break;
@@ -93,11 +93,12 @@ namespace SalaryCalculation
                         break;
                 }
             }
-            else if (employee is Worker || employee is Freelancer)
+            else if (currentUser is Worker || currentUser is Freelancer)
             {
                 switch (numOfItem)
                 {
                     case 1:
+                        result = AddHours();
                         break;
                     case 2:
                         break;
@@ -112,22 +113,9 @@ namespace SalaryCalculation
             {
                 Console.WriteLine("У вас нет прав просматривать данный раздел!\n");
             }
-        }
 
-        private static void Exit() => Environment.Exit(0);
-
-        private static void AddEmployee(Company c)
-        {
-            Console.Write("Фамилия добавляемого сотрудника:");
-            string surname = Console.ReadLine();
-            Console.Write("Должность добавляемого сотрудника:");
-            string role = Console.ReadLine();
-            Console.WriteLine();
-            Employee newEmployee = c.CreateEmployeeByRole(surname.ToLower(), role.ToLower());
-            bool result = c.AddNewEmployee(newEmployee);
             Console.WriteLine(GetStringByResult(result));
         }
-
         private static string GetStringByResult(bool result)
         {
             if (result)
@@ -136,6 +124,37 @@ namespace SalaryCalculation
                 return "Произошла ошибка, действие не выполнено.";
         }
 
-        static string FirstCharToUpper(string s) => CultureInfo.CurrentCulture.TextInfo.ToTitleCase(s);
+        private static bool AddHours()
+        {
+            Console.Write("Количество отработанных часов:");
+            bool result1 = byte.TryParse(Console.ReadLine().Trim(), out byte hours);
+            if (!result1)
+                return false;
+
+            Console.Write("Дата:");
+            bool result2 = DateTime.TryParse(Console.ReadLine().Trim(), out DateTime date);
+            if (!result2)
+                return false;
+
+            Console.Write("Дополнительное описание:");
+            string description = Console.ReadLine().ToLower();
+
+            JobReport jr = new JobReport(currentUser, hours, date, description);
+            return company.AddHoursToEmployee(jr);
+        }
+
+        private static bool AddEmployee()
+        {
+            Console.Write("Фамилия добавляемого сотрудника:");
+            string surname = Console.ReadLine();
+            Console.Write("Должность добавляемого сотрудника:");
+            string role = Console.ReadLine();
+            Console.WriteLine();
+            Employee newEmployee = company.CreateEmployeeByRole(surname.ToLower(), role.ToLower());
+            return company.AddNewEmployee(newEmployee);
+        }
+
+        private static void Exit() => Environment.Exit(0);
+
     }
 }

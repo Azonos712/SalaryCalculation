@@ -8,9 +8,9 @@ namespace SalaryCalculationLibrary
 {
     public class Company
     {
-        string companyName;
-        string storageDirectory;
-        readonly string[] namesOfLists = { "\\listOfAllEmployes.csv", "\\listOfDirectors.csv", "\\listOfWorkers.csv", "\\listOfFreelancers.csv" };
+        readonly string companyName;
+        readonly string storageDirectory;
+        readonly string fileNameOfAllEmployees = "\\listOfAllEmployes.csv";
         public Company(string name)
         {
             companyName = name;
@@ -23,19 +23,23 @@ namespace SalaryCalculationLibrary
             if (!Directory.Exists(storageDirectory))
                 Directory.CreateDirectory(storageDirectory);
 
-            foreach (var file in namesOfLists)
-            {
-                string currentFile = storageDirectory + file;
+            if (!File.Exists(storageDirectory + fileNameOfAllEmployees))
+                File.Create(storageDirectory + fileNameOfAllEmployees);
 
-                if (!File.Exists(currentFile))
-                    File.Create(currentFile);
-            }
+            if (!File.Exists(storageDirectory + new Worker("").DataFileName))
+                File.Create(storageDirectory + new Worker("").DataFileName);
+
+            if (!File.Exists(storageDirectory + new Director("").DataFileName))
+                File.Create(storageDirectory + new Director("").DataFileName);
+
+            if (!File.Exists(storageDirectory + new Freelancer("").DataFileName))
+                File.Create(storageDirectory + new Freelancer("").DataFileName);
         }
 
         public Employee FindEmployeeBySurname(string surname)
         {
             string line;
-            using (StreamReader sr = new StreamReader(storageDirectory + namesOfLists[0]))
+            using (StreamReader sr = new StreamReader(storageDirectory + fileNameOfAllEmployees))
             {
                 while ((line = sr.ReadLine()) != null)
                 {
@@ -71,7 +75,7 @@ namespace SalaryCalculationLibrary
             if (FindEmployeeBySurname(e.Surname) != null)
                 return false;
 
-            using (StreamWriter sw = new StreamWriter(storageDirectory + namesOfLists[0], true, System.Text.Encoding.Default))
+            using (StreamWriter sw = new StreamWriter(storageDirectory + fileNameOfAllEmployees, true, System.Text.Encoding.Default))
             {
                 sw.WriteLine(e.ToString());
             }
@@ -79,18 +83,16 @@ namespace SalaryCalculationLibrary
             return true;
         }
 
+        public bool AddHoursToEmployee(JobReport jr)
+        {
+            Employee employee = jr.WorkPerson;
 
+            using (StreamWriter sw = new StreamWriter(storageDirectory + employee.DataFileName, true, System.Text.Encoding.Default))
+            {
+                sw.WriteLine(jr.WorkDay.ToString("d") + "," + employee.Surname + "," + jr.Hours + "," + jr.Description);
+            }
 
-        //public Employee[] GetListOfEmployees()
-        //{
-        //    var list = new Employee[5];
-        //    return list;
-        //}
-
-        //public Employee[] GetListByEmployeesRole(Roles role)
-        //{
-        //    var list = new Employee[5];
-        //    return list;
-        //}
+            return true;
+        }
     }
 }
