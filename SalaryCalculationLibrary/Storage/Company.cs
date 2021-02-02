@@ -42,27 +42,44 @@ namespace SalaryCalculationLibrary
                     string[] sLine = line.Split(',');
                     if (sLine[0] == surname)
                     {
-                        switch (sLine[1])
-                        {
-                            case "сотрудник":
-                                return new Worker(sLine[0]);
-                            case "руководитель":
-                                return new Director(sLine[0]);
-                            case "фрилансер":
-                                return new Freelancer(sLine[0]);
-                            default:
-                                return null;
-                        }
+                        return CreateEmployeeByRole(sLine[0], sLine[1]);
                     }
                 }
             }
             return null;
         }
-
-        public bool AddNewEmployee(string surname, string role)
+        public Employee CreateEmployeeByRole(string surname, string role)
         {
-            throw new NotImplementedException();
+            switch (role)
+            {
+                case "сотрудник":
+                    return new Worker(surname);
+                case "руководитель":
+                    return new Director(surname);
+                case "фрилансер":
+                    return new Freelancer(surname);
+                default:
+                    return null;
+            }
         }
+
+        public bool AddNewEmployee(Employee e)
+        {
+            if (e == null)
+                return false;
+
+            if (FindEmployeeBySurname(e.Surname) != null)
+                return false;
+
+            using (StreamWriter sw = new StreamWriter(storageDirectory + namesOfLists[0], true, System.Text.Encoding.Default))
+            {
+                sw.WriteLine(e.ToString());
+            }
+
+            return true;
+        }
+
+
 
         //public Employee[] GetListOfEmployees()
         //{

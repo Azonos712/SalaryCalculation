@@ -14,5 +14,9 @@ namespace SalaryCalculationLibrary.Model
         {
             Surname = surname;
         }
+        public override string ToString()
+        {
+            return Surname + "," + RoleToStr;
+        }
     }
 }

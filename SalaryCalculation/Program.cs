@@ -32,7 +32,7 @@ namespace SalaryCalculation
             {
                 Console.WriteLine("Выберите желаемое действие:");
                 ShowMenu(currentEmployee);
-                Console.WriteLine("Напишите номер действия:");
+                Console.Write("Напишите номер действия:");
 
                 bool result = int.TryParse(Console.ReadLine().Trim(), out int numOfItem);
                 if (!result)
@@ -51,21 +51,21 @@ namespace SalaryCalculation
         {
             if(employee is Director)
             {
-                Console.WriteLine("(1). Добавить сотрудника\n");
-                Console.WriteLine("(2). Просмотреть отчёт по всем сотрудникам\n");
-                Console.WriteLine("(3). Просмотреть отчёт по конкретному сотруднику\n");
-                Console.WriteLine("(4). Добавить часы работы\n");
-                Console.WriteLine("(5). Выход из программы\n");
+                Console.WriteLine("(1). Добавить сотрудника");
+                Console.WriteLine("(2). Просмотреть отчёт по всем сотрудникам");
+                Console.WriteLine("(3). Просмотреть отчёт по конкретному сотруднику");
+                Console.WriteLine("(4). Добавить часы работы");
+                Console.WriteLine("(5). Выход из программы");
             }
             else if (employee is Worker || employee is Freelancer)
             {
-                Console.WriteLine("(1). Добавить отработанные часы\n");
-                Console.WriteLine("(2). Просмотр отработанных часов и зарплаты\n");
-                Console.WriteLine("(3). Выход из программы\n");
+                Console.WriteLine("(1). Добавить отработанные часы");
+                Console.WriteLine("(2). Просмотр отработанных часов и зарплаты");
+                Console.WriteLine("(3). Выход из программы");
             }
             else
             {
-                Console.WriteLine("У вас нет прав просматривать данный раздел!\n");
+                Console.WriteLine("У вас нет прав просматривать данный раздел!");
             }
         }
 
@@ -82,7 +82,8 @@ namespace SalaryCalculation
                         Console.Write("Должность добавляемого сотрудника:");
                         string role = Console.ReadLine();
                         Console.WriteLine();
-                        bool result = company.AddNewEmployee(surname, role);
+                        Employee newEmployee = company.CreateEmployeeByRole(surname, role);
+                        bool result = company.AddNewEmployee(newEmployee);
                         Console.WriteLine(GetStringByResult(result));
                         break;
                     case 2:
