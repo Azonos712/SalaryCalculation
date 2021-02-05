@@ -83,8 +83,11 @@ namespace SalaryCalculationLibrary
             return true;
         }
 
-        public bool AddJobReportToEmployee(Employee whoAdds,JobReport jr)
+        public bool AddJobReportToEmployee(Employee whoAdds, JobReport jr)
         {
+            if (FindJobReportBySurnameAndDate(jr.WorkPerson, jr.WorkDay) != null)
+                return false;
+
             if (whoAdds is Freelancer && DateTime.Today.AddDays(-2) > jr.WorkDay)
                 return false;
 
