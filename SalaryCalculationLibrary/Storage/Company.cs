@@ -75,7 +75,7 @@ namespace SalaryCalculationLibrary
             if (FindEmployeeBySurname(e.Surname) != null)
                 return false;
 
-            using (StreamWriter sw = new StreamWriter(storageDirectory + fileNameOfAllEmployees, true, System.Text.Encoding.Default))
+            using (StreamWriter sw = new StreamWriter(storageDirectory + fileNameOfAllEmployees, true, Encoding.Default))
             {
                 sw.WriteLine(e.ToString());
             }
@@ -91,7 +91,7 @@ namespace SalaryCalculationLibrary
             if (whoAdds is Freelancer && DateTime.Today.AddDays(-2) > jr.WorkDay)
                 return false;
 
-            using (StreamWriter sw = new StreamWriter(storageDirectory + jr.WorkPerson.GetDataFileName(), true, System.Text.Encoding.Default))
+            using (StreamWriter sw = new StreamWriter(storageDirectory + jr.WorkPerson.GetDataFileName(), true, Encoding.Default))
             {
                 sw.WriteLine(jr.WorkDay.ToString("d") + "," + jr.WorkPerson.Surname + "," + jr.Hours + "," + jr.Description);
             }

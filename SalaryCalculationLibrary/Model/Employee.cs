@@ -10,12 +10,13 @@ namespace SalaryCalculationLibrary.Model
         public abstract string GetRole();
         public abstract string GetDataFileName();
         public abstract decimal GetSalaryPerHour();
+
         public Employee(string surname)
         {
             Surname = surname;
         }
 
         public override string ToString() => Surname + "," + GetRole();
-        public decimal GetPaidByHours(int hours) => GetSalaryPerHour() * hours;
+        public virtual decimal GetPaidByHours(int hours) => GetSalaryPerHour() * hours;
     }
 }
