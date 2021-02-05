@@ -86,6 +86,7 @@ namespace SalaryCalculation
                     case 3:
                         break;
                     case 4:
+                        result = ShowJobReportByEmployee();
                         break;
                     case 5:
                         Exit();
@@ -170,6 +171,18 @@ namespace SalaryCalculation
 
             JobReport jr = new JobReport(employee, hours, date, description);
             return company.AddJobReportToEmployee(currentUser, jr);
+        }
+
+        static bool ShowJobReportByEmployee()
+        {
+            Console.Write("Фамилия сотрудника для которого будут показаны часы:");
+            string surname = Console.ReadLine();
+            Employee employee = company.FindEmployeeBySurname(surname);
+
+            if (employee != null)
+                return ShowJobReportByEmployee(employee);
+            else
+                return false;
         }
 
         private static bool ShowJobReportByEmployee(Employee employee)
