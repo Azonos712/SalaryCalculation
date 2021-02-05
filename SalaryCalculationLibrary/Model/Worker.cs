@@ -6,11 +6,13 @@ namespace SalaryCalculationLibrary.Model
 {
     public class Worker : Employee
     {
-        public override string RoleToStr { get => "сотрудник"; }
-        public override string DataFileName { get => "\\listOfWorkers.csv"; }
+        readonly decimal monthSalary;
         public Worker(string surname) : base(surname)
         {
-
+            monthSalary = 120000;
         }
+        public override string GetRole() => "сотрудник";
+        public override string GetDataFileName() => "\\listOfWorkers.csv";
+        public override decimal GetSalaryPerHour() => monthSalary / WorkStandarts.hoursInWorkMonth;
     }
 }

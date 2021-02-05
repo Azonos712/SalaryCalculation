@@ -6,11 +6,12 @@ namespace SalaryCalculationLibrary.Model
 {
     public class Freelancer : Employee
     {
-        public override string RoleToStr { get => "фрилансер"; }
-        public override string DataFileName { get => "\\listOfFreelancers.csv"; }
         public Freelancer(string surname) : base(surname)
         {
 
         }
+        public override string GetRole() => "фрилансер";
+        public override string GetDataFileName() => "\\listOfFreelancers.csv";
+        public override decimal GetSalaryPerHour() => 1000;
     }
 }

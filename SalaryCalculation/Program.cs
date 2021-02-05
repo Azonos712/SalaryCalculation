@@ -26,7 +26,7 @@ namespace SalaryCalculation
                 Console.Write("Такого сотрудника не найдено! Попробуйте повторить ввод: ");
             }
 
-            Console.WriteLine($"Добро пожаловать, {FirstCharToUpper(currentUser.Surname)}! Ваша роль - {currentUser.RoleToStr}");
+            Console.WriteLine($"Добро пожаловать, {Utility.FirstCharToUpper(currentUser.Surname)}! Ваша роль - {currentUser.GetRole()}");
 
             while (true)
             {
@@ -46,11 +46,11 @@ namespace SalaryCalculation
                 DoMenuItem(numOfItem);
             }
         }
-        static string FirstCharToUpper(string s) => CultureInfo.CurrentCulture.TextInfo.ToTitleCase(s);
+        
 
         private static void ShowMenu()
         {
-            if(currentUser is Director)
+            if (currentUser is Director)
             {
                 Console.WriteLine("(1). Добавить сотрудника");
                 Console.WriteLine("(2). Просмотреть отчёт по всем сотрудникам");
@@ -98,9 +98,10 @@ namespace SalaryCalculation
                 switch (numOfItem)
                 {
                     case 1:
-                        result = AddHours();
+                        result = AddHoursForEmployee(currentUser);
                         break;
                     case 2:
+                        result = ShowJobReportByEmployee(currentUser);
                         break;
                     case 3:
                         Exit();
@@ -116,6 +117,7 @@ namespace SalaryCalculation
 
             Console.WriteLine(GetStringByResult(result));
         }
+
         private static string GetStringByResult(bool result)
         {
             if (result)
@@ -123,8 +125,19 @@ namespace SalaryCalculation
             else
                 return "Произошла ошибка, действие не выполнено.";
         }
+        private static bool AddEmployee()
+        {
+            Console.Write("Фамилия добавляемого сотрудника:");
+            string surname = Console.ReadLine();
+            Console.Write("Должность добавляемого сотрудника:");
+            string role = Console.ReadLine();
+            Console.WriteLine();
 
-        private static bool AddHours()
+            Employee newEmployee = company.CreateEmployeeByRole(surname.ToLower(), role.ToLower());
+            return company.AddNewEmployee(newEmployee);
+        }
+
+        private static bool AddHoursForEmployee(Employee employee)
         {
             Console.Write("Количество отработанных часов:");
             bool result1 = byte.TryParse(Console.ReadLine().Trim(), out byte hours);
@@ -142,20 +155,26 @@ namespace SalaryCalculation
             Console.Write("Дополнительное описание:");
             string description = Console.ReadLine().ToLower();
 
-            JobReport jr = new JobReport(currentUser, hours, date, description);
-            return company.AddHoursToEmployee(jr);
+            JobReport jr = new JobReport(employee, hours, date, description);
+            return company.AddJobReportToEmployee(jr);
         }
 
-        private static bool AddEmployee()
+        private static bool ShowJobReportByEmployee(Employee employee)
         {
-            Console.Write("Фамилия добавляемого сотрудника:");
-            string surname = Console.ReadLine();
-            Console.Write("Должность добавляемого сотрудника:");
-            string role = Console.ReadLine();
-            Console.WriteLine();
+            Console.Write("Дата начала:");
+            bool result1 = DateTime.TryParse(Console.ReadLine().Trim(), out DateTime startDate);
+            if (!result1)
+                return false;
 
-            Employee newEmployee = company.CreateEmployeeByRole(surname.ToLower(), role.ToLower());
-            return company.AddNewEmployee(newEmployee);
+            Console.Write("Дата окончания:");
+            bool result2 = DateTime.TryParse(Console.ReadLine().Trim(), out DateTime endDate);
+            if (!result2)
+                return false;
+
+            Console.WriteLine();
+            string resultStr = company.ShowJobReportForPeriod(employee, startDate, endDate);
+            Console.WriteLine(resultStr);
+            return true;
         }
 
         private static void Exit() => Environment.Exit(0);

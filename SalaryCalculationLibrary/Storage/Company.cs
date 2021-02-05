@@ -26,14 +26,14 @@ namespace SalaryCalculationLibrary
             if (!File.Exists(storageDirectory + fileNameOfAllEmployees))
                 File.Create(storageDirectory + fileNameOfAllEmployees);
 
-            if (!File.Exists(storageDirectory + new Worker("").DataFileName))
-                File.Create(storageDirectory + new Worker("").DataFileName);
+            if (!File.Exists(storageDirectory + new Worker("").GetDataFileName()))
+                File.Create(storageDirectory + new Worker("").GetDataFileName());
 
-            if (!File.Exists(storageDirectory + new Director("").DataFileName))
-                File.Create(storageDirectory + new Director("").DataFileName);
+            if (!File.Exists(storageDirectory + new Director("").GetDataFileName()))
+                File.Create(storageDirectory + new Director("").GetDataFileName());
 
-            if (!File.Exists(storageDirectory + new Freelancer("").DataFileName))
-                File.Create(storageDirectory + new Freelancer("").DataFileName);
+            if (!File.Exists(storageDirectory + new Freelancer("").GetDataFileName()))
+                File.Create(storageDirectory + new Freelancer("").GetDataFileName());
         }
 
         public Employee FindEmployeeBySurname(string surname)
@@ -83,14 +83,14 @@ namespace SalaryCalculationLibrary
             return true;
         }
 
-        public bool AddHoursToEmployee(JobReport jr)
+        public bool AddJobReportToEmployee(JobReport jr)
         {
             Employee employee = jr.WorkPerson;
 
             if (employee is Freelancer && DateTime.Today.AddDays(-2) > jr.WorkDay)
                 return false;
 
-            using (StreamWriter sw = new StreamWriter(storageDirectory + employee.DataFileName, true, System.Text.Encoding.Default))
+            using (StreamWriter sw = new StreamWriter(storageDirectory + employee.GetDataFileName(), true, System.Text.Encoding.Default))
             {
                 sw.WriteLine(jr.WorkDay.ToString("d") + "," + employee.Surname + "," + jr.Hours + "," + jr.Description);
             }
@@ -101,7 +101,7 @@ namespace SalaryCalculationLibrary
         public JobReport FindJobReportBySurnameAndDate(Employee employee, DateTime date)
         {
             string line;
-            using (StreamReader sr = new StreamReader(storageDirectory + employee.DataFileName))
+            using (StreamReader sr = new StreamReader(storageDirectory + employee.GetDataFileName()))
             {
                 while ((line = sr.ReadLine()) != null)
                 {
@@ -116,6 +116,31 @@ namespace SalaryCalculationLibrary
                 }
             }
             return null;
+        }
+
+        public string ShowJobReportForPeriod(Employee employee, DateTime startDate, DateTime endDate)
+        {
+            string result = $"Отчёт по сотруднику: {Utility.FirstCharToUpper(employee.Surname)} за период с {startDate:d} по {endDate:d}\n";
+            int workHours = 0;
+            string line;
+            using (StreamReader sr = new StreamReader(storageDirectory + employee.GetDataFileName()))
+            {
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] sLine = line.Split(',');
+                    if (startDate <= DateTime.Parse(sLine[0]) && DateTime.Parse(sLine[0]) <= endDate)
+                    {
+                        if (sLine[1] == employee.Surname)
+                        {
+                            result += $"{sLine[0]}, {sLine[2]} часов, {sLine[3]}" + '\n';
+                            workHours += int.Parse(sLine[2]);
+                        }
+                    }
+                }
+            }
+            decimal money = employee.GetPaidByHours(workHours);
+            result += $"Итого: {workHours} часов, заработано: {money}";
+            return result;
         }
     }
 }
