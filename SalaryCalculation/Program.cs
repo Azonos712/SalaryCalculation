@@ -46,16 +46,16 @@ namespace SalaryCalculation
                 DoMenuItem(numOfItem);
             }
         }
-        
+
 
         private static void ShowMenu()
         {
             if (currentUser is Director)
             {
                 Console.WriteLine("(1). Добавить сотрудника");
-                Console.WriteLine("(2). Просмотреть отчёт по всем сотрудникам");
-                Console.WriteLine("(3). Просмотреть отчёт по конкретному сотруднику");
-                Console.WriteLine("(4). Добавить часы работы");
+                Console.WriteLine("(2). Добавить часы работы");
+                Console.WriteLine("(3). Просмотреть отчёт по всем сотрудникам");
+                Console.WriteLine("(4). Просмотреть отчёт по конкретному сотруднику");
                 Console.WriteLine("(5). Выход из программы");
             }
             else if (currentUser is Worker || currentUser is Freelancer)
@@ -81,6 +81,7 @@ namespace SalaryCalculation
                         result = AddEmployee();
                         break;
                     case 2:
+                        result = AddHoursForEmployee();
                         break;
                     case 3:
                         break;
@@ -137,6 +138,18 @@ namespace SalaryCalculation
             return company.AddNewEmployee(newEmployee);
         }
 
+        static bool AddHoursForEmployee()
+        {
+            Console.Write("Фамилия сотрудника для которого будут добавлены часы:");
+            string surname = Console.ReadLine();
+            Employee employee = company.FindEmployeeBySurname(surname);
+
+            if (employee != null)
+                return AddHoursForEmployee(employee);
+            else
+                return false;
+        }
+
         private static bool AddHoursForEmployee(Employee employee)
         {
             Console.Write("Количество отработанных часов:");
@@ -156,7 +169,7 @@ namespace SalaryCalculation
             string description = Console.ReadLine().ToLower();
 
             JobReport jr = new JobReport(employee, hours, date, description);
-            return company.AddJobReportToEmployee(jr);
+            return company.AddJobReportToEmployee(currentUser, jr);
         }
 
         private static bool ShowJobReportByEmployee(Employee employee)

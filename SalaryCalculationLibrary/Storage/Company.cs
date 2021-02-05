@@ -83,16 +83,14 @@ namespace SalaryCalculationLibrary
             return true;
         }
 
-        public bool AddJobReportToEmployee(JobReport jr)
+        public bool AddJobReportToEmployee(Employee whoAdds,JobReport jr)
         {
-            Employee employee = jr.WorkPerson;
-
-            if (employee is Freelancer && DateTime.Today.AddDays(-2) > jr.WorkDay)
+            if (whoAdds is Freelancer && DateTime.Today.AddDays(-2) > jr.WorkDay)
                 return false;
 
-            using (StreamWriter sw = new StreamWriter(storageDirectory + employee.GetDataFileName(), true, System.Text.Encoding.Default))
+            using (StreamWriter sw = new StreamWriter(storageDirectory + jr.WorkPerson.GetDataFileName(), true, System.Text.Encoding.Default))
             {
-                sw.WriteLine(jr.WorkDay.ToString("d") + "," + employee.Surname + "," + jr.Hours + "," + jr.Description);
+                sw.WriteLine(jr.WorkDay.ToString("d") + "," + jr.WorkPerson.Surname + "," + jr.Hours + "," + jr.Description);
             }
 
             return true;
