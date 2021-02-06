@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using SalaryCalculation.Library;
 using SalaryCalculation.Library.Model;
 using SalaryCalculation.Library.Storage;
@@ -218,8 +220,16 @@ namespace SalaryCalculation
                 return false;
 
             Console.WriteLine();
-            string resultStr = company.ShowJobReportForPeriod(employee, startDate, endDate);
-            Console.WriteLine(resultStr);
+
+            List<JobReport> result = company.GetJobReportsForPeriodByEmployee(employee, startDate, endDate);
+
+            Console.WriteLine($"Отчёт по сотруднику: {Utility.FirstCharToUpper(employee.Surname)} за период с {startDate:d} по {endDate:d}");
+            foreach (var jr in result)
+                Console.WriteLine($"{jr.WorkDay:d}, {jr.Hours} часов, {jr.Description}");
+
+            int workHours = result.Sum(x => x.Hours);
+            Console.WriteLine($"Итого: {workHours} часов, заработано: {employee.GetPaidByHours(workHours)}");
+
             return true;
         }
 
