@@ -11,6 +11,6 @@ C:\MyProgramms\SalaryCalculation\SalaryCalculation\obj\Debug\netcoreapp3.1\Salar
 C:\MyProgramms\SalaryCalculation\SalaryCalculation\obj\Debug\netcoreapp3.1\SalaryCalculation.dll
 C:\MyProgramms\SalaryCalculation\SalaryCalculation\obj\Debug\netcoreapp3.1\SalaryCalculation.pdb
 C:\MyProgramms\SalaryCalculation\SalaryCalculation\obj\Debug\netcoreapp3.1\SalaryCalculation.genruntimeconfig.cache
-C:\MyProgramms\SalaryCalculation\SalaryCalculation\bin\Debug\netcoreapp3.1\SalaryCalculationLibrary.dll
-C:\MyProgramms\SalaryCalculation\SalaryCalculation\bin\Debug\netcoreapp3.1\SalaryCalculationLibrary.pdb
 C:\MyProgramms\SalaryCalculation\SalaryCalculation\obj\Debug\netcoreapp3.1\SalaryCalculation.csproj.CopyComplete
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\bin\Debug\netcoreapp3.1\SalaryCalculation.Library.dll
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\bin\Debug\netcoreapp3.1\SalaryCalculation.Library.pdb

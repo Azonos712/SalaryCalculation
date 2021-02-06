@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SalaryCalculationLibrary\SalaryCalculationLibrary.csproj" />
+    <ProjectReference Include="..\SalaryCalculation.Library\SalaryCalculation.Library.csproj" />
   </ItemGroup>
 
 </Project>

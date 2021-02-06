@@ -2,28 +2,28 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "SalaryCalculationLibrary/1.0.0": {
+      "SalaryCalculation.Library/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "compile": {
-          "bin/placeholder/SalaryCalculationLibrary.dll": {}
+          "bin/placeholder/SalaryCalculation.Library.dll": {}
         },
         "runtime": {
-          "bin/placeholder/SalaryCalculationLibrary.dll": {}
+          "bin/placeholder/SalaryCalculation.Library.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "SalaryCalculationLibrary/1.0.0": {
+    "SalaryCalculation.Library/1.0.0": {
       "type": "project",
-      "path": "../SalaryCalculationLibrary/SalaryCalculationLibrary.csproj",
-      "msbuildProject": "../SalaryCalculationLibrary/SalaryCalculationLibrary.csproj"
+      "path": "../SalaryCalculation.Library/SalaryCalculation.Library.csproj",
+      "msbuildProject": "../SalaryCalculation.Library/SalaryCalculation.Library.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "SalaryCalculationLibrary >= 1.0.0"
+      "SalaryCalculation.Library >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -53,8 +53,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculationLibrary\\SalaryCalculationLibrary.csproj": {
-              "projectPath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculationLibrary\\SalaryCalculationLibrary.csproj"
+            "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj": {
+              "projectPath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj"
             }
           }
         }

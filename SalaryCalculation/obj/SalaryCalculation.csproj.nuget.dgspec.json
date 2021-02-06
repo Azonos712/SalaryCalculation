@@ -4,14 +4,14 @@
     "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation\\SalaryCalculation.csproj": {}
   },
   "projects": {
-    "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculationLibrary\\SalaryCalculationLibrary.csproj": {
+    "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculationLibrary\\SalaryCalculationLibrary.csproj",
-        "projectName": "SalaryCalculationLibrary",
-        "projectPath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculationLibrary\\SalaryCalculationLibrary.csproj",
+        "projectUniqueName": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj",
+        "projectName": "SalaryCalculation.Library",
+        "projectPath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj",
         "packagesPath": "C:\\Users\\Intel\\.nuget\\packages\\",
-        "outputPath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculationLibrary\\obj\\",
+        "outputPath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Intel\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -85,8 +85,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculationLibrary\\SalaryCalculationLibrary.csproj": {
-                "projectPath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculationLibrary\\SalaryCalculationLibrary.csproj"
+              "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj": {
+                "projectPath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj"
               }
             }
           }

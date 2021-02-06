@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Globalization;
-using SalaryCalculationLibrary;
-using SalaryCalculationLibrary.Model;
+using SalaryCalculation.Library;
+using SalaryCalculation.Library.Model;
+using SalaryCalculation.Library.Storage;
 
 namespace SalaryCalculation
 {
@@ -84,6 +85,7 @@ namespace SalaryCalculation
                         result = AddHoursForEmployee();
                         break;
                     case 3:
+                        result = ShowJobReportByAllEmployee();
                         break;
                     case 4:
                         result = ShowJobReportByEmployee();
@@ -127,6 +129,7 @@ namespace SalaryCalculation
             else
                 return "Произошла ошибка, действие не выполнено.";
         }
+
         private static bool AddEmployee()
         {
             Console.Write("Фамилия добавляемого сотрудника:");
@@ -151,6 +154,35 @@ namespace SalaryCalculation
                 return false;
         }
 
+        static bool ShowJobReportByEmployee()
+        {
+            Console.Write("Фамилия сотрудника для которого будут показаны часы:");
+            string surname = Console.ReadLine();
+            Employee employee = company.FindEmployeeBySurname(surname);
+
+            if (employee != null)
+                return ShowJobReportByEmployee(employee);
+            else
+                return false;
+        }
+
+        private static bool ShowJobReportByAllEmployee()
+        {
+            Console.Write("Дата начала:");
+            bool result1 = DateTime.TryParse(Console.ReadLine().Trim(), out DateTime startDate);
+            if (!result1)
+                return false;
+
+            Console.Write("Дата окончания:");
+            bool result2 = DateTime.TryParse(Console.ReadLine().Trim(), out DateTime endDate);
+            if (!result2)
+                return false;
+
+            //string resultStr = company.ShowJobReportByAllEmployee(startDate, endDate);
+            //Console.WriteLine(resultStr);
+            return true;
+        }
+
         private static bool AddHoursForEmployee(Employee employee)
         {
             Console.Write("Количество отработанных часов:");
@@ -171,18 +203,6 @@ namespace SalaryCalculation
 
             JobReport jr = new JobReport(employee, hours, date, description);
             return company.AddJobReportToEmployee(currentUser, jr);
-        }
-
-        static bool ShowJobReportByEmployee()
-        {
-            Console.Write("Фамилия сотрудника для которого будут показаны часы:");
-            string surname = Console.ReadLine();
-            Employee employee = company.FindEmployeeBySurname(surname);
-
-            if (employee != null)
-                return ShowJobReportByEmployee(employee);
-            else
-                return false;
         }
 
         private static bool ShowJobReportByEmployee(Employee employee)

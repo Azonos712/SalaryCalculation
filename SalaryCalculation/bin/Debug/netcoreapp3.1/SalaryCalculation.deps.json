@@ -8,15 +8,15 @@
     ".NETCoreApp,Version=v3.1": {
       "SalaryCalculation/1.0.0": {
         "dependencies": {
-          "SalaryCalculationLibrary": "1.0.0"
+          "SalaryCalculation.Library": "1.0.0"
         },
         "runtime": {
           "SalaryCalculation.dll": {}
         }
       },
-      "SalaryCalculationLibrary/1.0.0": {
+      "SalaryCalculation.Library/1.0.0": {
         "runtime": {
-          "SalaryCalculationLibrary.dll": {}
+          "SalaryCalculation.Library.dll": {}
         }
       }
     }
@@ -27,7 +27,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "SalaryCalculationLibrary/1.0.0": {
+    "SalaryCalculation.Library/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
