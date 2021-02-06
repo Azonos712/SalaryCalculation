@@ -119,31 +119,6 @@ namespace SalaryCalculation.Library.Storage
             return null;
         }
 
-        //public string ShowJobReportForPeriod(Employee employee, DateTime startDate, DateTime endDate)
-        //{
-        //    string result = $"Отчёт по сотруднику: {Utility.FirstCharToUpper(employee.Surname)} за период с {startDate:d} по {endDate:d}\n";
-        //    int workHours = 0;
-        //    string line;
-        //    using (StreamReader sr = new StreamReader(storageDirectory + employee.GetDataFileName()))
-        //    {
-        //        while ((line = sr.ReadLine()) != null)
-        //        {
-        //            string[] sLine = line.Split(',');
-        //            if (startDate <= DateTime.Parse(sLine[0]) && DateTime.Parse(sLine[0]) <= endDate)
-        //            {
-        //                if (sLine[1] == employee.Surname)
-        //                {
-        //                    result += $"{sLine[0]}, {sLine[2]} часов, {sLine[3]}" + '\n';
-        //                    workHours += int.Parse(sLine[2]);
-        //                }
-        //            }
-        //        }
-        //    }
-        //    decimal money = employee.GetPaidByHours(workHours);
-        //    result += $"Итого: {workHours} часов, заработано: {money}";
-        //    return result;
-        //}
-
         public List<JobReport> GetJobReportsForPeriodByEmployee(Employee employee, DateTime startDate, DateTime endDate)
         {
             var jobReports = new List<JobReport>();
@@ -158,7 +133,7 @@ namespace SalaryCalculation.Library.Storage
                         if (sLine[1] == employee.Surname)
                         {
                             jobReports.Add(new JobReport(employee, byte.Parse(sLine[2]), DateTime.Parse(sLine[0]), sLine[3]));
-                            
+
                         }
                     }
                 }
@@ -166,29 +141,19 @@ namespace SalaryCalculation.Library.Storage
             return jobReports;
         }
 
-        //public string ShowJobReportByAllEmployee(DateTime startDate, DateTime endDate)
-        //{
-        //    string result = $"Отчёт за период с {startDate:d} по {endDate:d}\n";
-        //    int workHours = 0;
-        //    string line;
-        //    using (StreamReader sr = new StreamReader(storageDirectory + fileNameOfAllEmployees))
-        //    {
-        //        while ((line = sr.ReadLine()) != null)
-        //        {
-        //            string[] sLine = line.Split(',');
-        //            if (startDate <= DateTime.Parse(sLine[0]) && DateTime.Parse(sLine[0]) <= endDate)
-        //            {
-        //                if (sLine[1] == employee.Surname)
-        //                {
-        //                    result += $"{sLine[0]}, {sLine[2]} часов, {sLine[3]}" + '\n';
-        //                    workHours += int.Parse(sLine[2]);
-        //                }
-        //            }
-        //        }
-        //    }
-        //    decimal money = employee.GetPaidByHours(workHours);
-        //    result += $"Итого: {workHours} часов, заработано: {money}";
-        //    return result;
-        //}
+        public List<JobReport> GetJobReportsForPeriodByAllEmployees(DateTime startDate, DateTime endDate)
+        {
+            var jobReports = new List<JobReport>();
+            string line;
+            using (StreamReader sr = new StreamReader(storageDirectory + fileNameOfAllEmployees))
+            {
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] sLine = line.Split(',');
+                    jobReports.AddRange(GetJobReportsForPeriodByEmployee(CreateEmployeeByRole(sLine[0], sLine[1]), startDate, endDate));
+                }
+            }
+            return jobReports;
+        }
     }
 }

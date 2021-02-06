@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SalaryCalculation.Library.Model
+﻿namespace SalaryCalculation.Library.Model
 {
     public abstract class Employee
     {

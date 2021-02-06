@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using SalaryCalculation.Library;
+﻿using SalaryCalculation.Library;
 using SalaryCalculation.Library.Model;
 using SalaryCalculation.Library.Storage;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SalaryCalculation
 {
@@ -168,7 +167,7 @@ namespace SalaryCalculation
                 return false;
         }
 
-        private static bool ShowJobReportByAllEmployee()
+        private static bool ShowJobReportByAllEmployees()
         {
             Console.Write("Дата начала:");
             bool result1 = DateTime.TryParse(Console.ReadLine().Trim(), out DateTime startDate);
@@ -180,8 +179,27 @@ namespace SalaryCalculation
             if (!result2)
                 return false;
 
-            //string resultStr = company.ShowJobReportByAllEmployee(startDate, endDate);
-            //Console.WriteLine(resultStr);
+            Console.WriteLine();
+
+            List<JobReport> result = company.GetJobReportsForPeriodByAllEmployees(startDate, endDate);
+
+            Console.WriteLine($"Отчёт за период с {startDate:d} по {endDate:d}");
+
+            var groupResult = result.GroupBy(x=>x.WorkPerson.Surname);
+
+            decimal allMoney = 0;
+            foreach (var item in groupResult)
+            {
+                int workHours = item.Sum(x => x.Hours);
+                decimal money = item.FirstOrDefault().WorkPerson.GetPaidByHours(workHours);
+                allMoney += money;
+                Console.WriteLine($"{item.Key} отработал {workHours} часов и заработал за период {money}");
+            }
+
+            int allHours = result.Sum(x => x.Hours);
+
+            Console.WriteLine($"Всего отработано {allHours} часов, сумма к выплате {allMoney}");
+
             return true;
         }
 
