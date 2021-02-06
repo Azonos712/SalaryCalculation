@@ -86,7 +86,7 @@ namespace SalaryCalculation
                         result = AddHoursForEmployee();
                         break;
                     case 3:
-                        result = ShowJobReportByAllEmployee();
+                        result = ShowJobReportByAllEmployees();
                         break;
                     case 4:
                         result = ShowJobReportByEmployee();

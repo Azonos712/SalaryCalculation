@@ -94,3 +94,5 @@ C:\MyProgramms\SalaryCalculation\SalaryCalculation.Tests\obj\Debug\netcoreapp3.1
 C:\MyProgramms\SalaryCalculation\SalaryCalculation.Tests\obj\Debug\netcoreapp3.1\SalaryCalculation.Tests.dll
 C:\MyProgramms\SalaryCalculation\SalaryCalculation.Tests\obj\Debug\netcoreapp3.1\SalaryCalculation.Tests.pdb
 C:\MyProgramms\SalaryCalculation\SalaryCalculation.Tests\obj\Debug\netcoreapp3.1\SalaryCalculation.Tests.genruntimeconfig.cache
+C:\MyProgramms\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\SalaryCalculation.Library.dll
+C:\MyProgramms\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\SalaryCalculation.Library.pdb

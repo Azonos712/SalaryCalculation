@@ -2,13 +2,12 @@
 {
     public class Director : Employee
     {
-        readonly decimal monthSalary;
+        readonly decimal monthSalary = 200000;
         public Director(string surname) : base(surname)
         {
-            monthSalary = 200000;
+
         }
         public override string GetRole() => "руководитель";
-        public override string GetDataFileName() => "\\listOfDirectors.csv";
         public override decimal GetSalaryPerHour() => monthSalary / WorkStandarts.hoursInWorkMonth;
         public override decimal GetPaidByHours(int hours)
         {

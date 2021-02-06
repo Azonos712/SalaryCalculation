@@ -7,7 +7,6 @@
 
         }
         public override string GetRole() => "фрилансер";
-        public override string GetDataFileName() => "\\listOfFreelancers.csv";
         public override decimal GetSalaryPerHour() => 1000;
     }
 }

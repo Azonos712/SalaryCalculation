@@ -8,50 +8,30 @@ namespace SalaryCalculation.Library.Storage
 {
     public class Company
     {
-        readonly string companyName;
-        readonly string storageDirectory;
-        readonly string fileNameOfAllEmployees = "\\listOfAllEmployes.csv";
+        readonly string _companyName;
+        readonly FilesService _fileService;
         public Company(string name)
         {
-            companyName = name;
-            storageDirectory = Directory.GetCurrentDirectory() + "\\" + companyName;
-            CheckStorage();
-        }
-
-        private void CheckStorage()
-        {
-            if (!Directory.Exists(storageDirectory))
-                Directory.CreateDirectory(storageDirectory);
-
-            if (!File.Exists(storageDirectory + fileNameOfAllEmployees))
-                File.Create(storageDirectory + fileNameOfAllEmployees);
-
-            if (!File.Exists(storageDirectory + new Worker("").GetDataFileName()))
-                File.Create(storageDirectory + new Worker("").GetDataFileName());
-
-            if (!File.Exists(storageDirectory + new Director("").GetDataFileName()))
-                File.Create(storageDirectory + new Director("").GetDataFileName());
-
-            if (!File.Exists(storageDirectory + new Freelancer("").GetDataFileName()))
-                File.Create(storageDirectory + new Freelancer("").GetDataFileName());
+            _companyName = name;
+            _fileService = new FilesService(_companyName);
         }
 
         public Employee FindEmployeeBySurname(string surname)
         {
             string line;
-            using (StreamReader sr = new StreamReader(storageDirectory + fileNameOfAllEmployees))
+            using (StreamReader sr = new StreamReader(_fileService.PathToAllEmployees))
             {
                 while ((line = sr.ReadLine()) != null)
                 {
                     string[] sLine = line.Split(',');
+
                     if (sLine[0] == surname)
-                    {
                         return CreateEmployeeByRole(sLine[0], sLine[1]);
-                    }
                 }
             }
             return null;
         }
+
         public Employee CreateEmployeeByRole(string surname, string role)
         {
             switch (role)
@@ -75,12 +55,29 @@ namespace SalaryCalculation.Library.Storage
             if (FindEmployeeBySurname(e.Surname) != null)
                 return false;
 
-            using (StreamWriter sw = new StreamWriter(storageDirectory + fileNameOfAllEmployees, true, Encoding.Default))
+            using (StreamWriter sw = new StreamWriter(_fileService.PathToAllEmployees, true, Encoding.Default))
             {
                 sw.WriteLine(e.ToString());
             }
 
             return true;
+        }
+
+        public JobReport FindJobReportBySurnameAndDate(Employee employee, DateTime date)
+        {
+            string line;
+            using (StreamReader sr = new StreamReader(_fileService.GetPathByEmployee(employee)))
+            {
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] sLine = line.Split(',');
+
+                    if (sLine[0] == date.ToString("d"))
+                        if (sLine[1] == employee.Surname)
+                            return new JobReport(employee, byte.Parse(sLine[2]), date, sLine[3]);
+                }
+            }
+            return null;
         }
 
         public bool AddJobReportToEmployee(Employee whoAdds, JobReport jr)
@@ -91,7 +88,7 @@ namespace SalaryCalculation.Library.Storage
             if (whoAdds is Freelancer && DateTime.Today.AddDays(-2) > jr.WorkDay)
                 return false;
 
-            using (StreamWriter sw = new StreamWriter(storageDirectory + jr.WorkPerson.GetDataFileName(), true, Encoding.Default))
+            using (StreamWriter sw = new StreamWriter(_fileService.GetPathByEmployee(jr.WorkPerson), true, Encoding.Default))
             {
                 sw.WriteLine(jr.WorkDay.ToString("d") + "," + jr.WorkPerson.Surname + "," + jr.Hours + "," + jr.Description);
             }
@@ -99,43 +96,18 @@ namespace SalaryCalculation.Library.Storage
             return true;
         }
 
-        public JobReport FindJobReportBySurnameAndDate(Employee employee, DateTime date)
-        {
-            string line;
-            using (StreamReader sr = new StreamReader(storageDirectory + employee.GetDataFileName()))
-            {
-                while ((line = sr.ReadLine()) != null)
-                {
-                    string[] sLine = line.Split(',');
-                    if (sLine[0] == date.ToString("d"))
-                    {
-                        if (sLine[1] == employee.Surname)
-                        {
-                            return new JobReport(employee, byte.Parse(sLine[2]), date, sLine[3]);
-                        }
-                    }
-                }
-            }
-            return null;
-        }
-
         public List<JobReport> GetJobReportsForPeriodByEmployee(Employee employee, DateTime startDate, DateTime endDate)
         {
             var jobReports = new List<JobReport>();
             string line;
-            using (StreamReader sr = new StreamReader(storageDirectory + employee.GetDataFileName()))
+            using (StreamReader sr = new StreamReader(_fileService.GetPathByEmployee(employee)))
             {
                 while ((line = sr.ReadLine()) != null)
                 {
                     string[] sLine = line.Split(',');
                     if (startDate <= DateTime.Parse(sLine[0]) && DateTime.Parse(sLine[0]) <= endDate)
-                    {
                         if (sLine[1] == employee.Surname)
-                        {
                             jobReports.Add(new JobReport(employee, byte.Parse(sLine[2]), DateTime.Parse(sLine[0]), sLine[3]));
-
-                        }
-                    }
                 }
             }
             return jobReports;
@@ -145,7 +117,7 @@ namespace SalaryCalculation.Library.Storage
         {
             var jobReports = new List<JobReport>();
             string line;
-            using (StreamReader sr = new StreamReader(storageDirectory + fileNameOfAllEmployees))
+            using (StreamReader sr = new StreamReader(_fileService.PathToAllEmployees))
             {
                 while ((line = sr.ReadLine()) != null)
                 {

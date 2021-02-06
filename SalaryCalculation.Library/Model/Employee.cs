@@ -4,7 +4,6 @@
     {
         public string Surname { get; }
         public abstract string GetRole();
-        public abstract string GetDataFileName();
         public abstract decimal GetSalaryPerHour();
 
         public Employee(string surname)
