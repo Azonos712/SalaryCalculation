@@ -4,7 +4,7 @@ This program is my training application. It allows you to keep track of the empl
 
 ## Getting Started:
 
-### Download:
+### Download
 
 See the [Releases page](https://github.com/Azonos712/SalaryCalculation/releases).
 
