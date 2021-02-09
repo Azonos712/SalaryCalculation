@@ -3,15 +3,14 @@
     public abstract class Employee
     {
         public string Surname { get; }
-        public abstract string GetRole();
-        public abstract decimal GetSalaryPerHour();
 
         public Employee(string surname)
         {
             Surname = surname;
         }
-
-        public override string ToString() => Surname + "," + GetRole();
+        public abstract string GetRole();
+        public abstract decimal GetSalaryPerHour();
         public virtual decimal GetPaidByHours(int hours) => GetSalaryPerHour() * hours;
+        public override string ToString() => Surname + "," + GetRole();
     }
 }

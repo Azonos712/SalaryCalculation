@@ -8,8 +8,9 @@ namespace SalaryCalculation.Library.Storage
 {
     public class Company
     {
-        readonly string _companyName;
-        readonly FilesService _fileService;
+        private readonly string _companyName;
+        private readonly FilesService _fileService;
+
         public Company(string name)
         {
             _companyName = name;
