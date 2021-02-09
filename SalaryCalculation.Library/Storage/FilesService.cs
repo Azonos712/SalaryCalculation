@@ -6,7 +6,7 @@ namespace SalaryCalculation.Library.Storage
     class FilesService
     {
         private readonly string storageDirectory;
-        private readonly string fileNameOfAllEmployees = "\\listOfAllEmployes.csv";
+        private readonly string fileNameOfAllEmployees = "\\listOfAllEmployees.csv";
         private readonly string fileNameOfWorkers = "\\listOfWorkers.csv";
         private readonly string fileNameOfDirectors = "\\listOfDirectors.csv";
         private readonly string fileNameOfFreelancers = "\\listOfFreelancers.csv";

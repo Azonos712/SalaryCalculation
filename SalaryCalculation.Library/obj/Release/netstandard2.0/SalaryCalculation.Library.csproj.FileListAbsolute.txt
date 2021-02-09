@@ -1,0 +1,9 @@
+C:\MyProgramms\SalaryCalculation\SalaryCalculation.Library\bin\Release\netstandard2.0\SalaryCalculation.Library.deps.json
+C:\MyProgramms\SalaryCalculation\SalaryCalculation.Library\bin\Release\netstandard2.0\SalaryCalculation.Library.dll
+C:\MyProgramms\SalaryCalculation\SalaryCalculation.Library\bin\Release\netstandard2.0\SalaryCalculation.Library.pdb
+C:\MyProgramms\SalaryCalculation\SalaryCalculation.Library\obj\Release\netstandard2.0\SalaryCalculation.Library.csprojAssemblyReference.cache
+C:\MyProgramms\SalaryCalculation\SalaryCalculation.Library\obj\Release\netstandard2.0\SalaryCalculation.Library.AssemblyInfoInputs.cache
+C:\MyProgramms\SalaryCalculation\SalaryCalculation.Library\obj\Release\netstandard2.0\SalaryCalculation.Library.AssemblyInfo.cs
+C:\MyProgramms\SalaryCalculation\SalaryCalculation.Library\obj\Release\netstandard2.0\SalaryCalculation.Library.csproj.CoreCompileInputs.cache
+C:\MyProgramms\SalaryCalculation\SalaryCalculation.Library\obj\Release\netstandard2.0\SalaryCalculation.Library.dll
+C:\MyProgramms\SalaryCalculation\SalaryCalculation.Library\obj\Release\netstandard2.0\SalaryCalculation.Library.pdb

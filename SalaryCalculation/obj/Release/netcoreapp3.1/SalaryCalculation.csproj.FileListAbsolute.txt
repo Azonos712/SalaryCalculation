@@ -1,0 +1,16 @@
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\bin\Release\netcoreapp3.1\SalaryCalculation.exe
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\bin\Release\netcoreapp3.1\SalaryCalculation.deps.json
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\bin\Release\netcoreapp3.1\SalaryCalculation.runtimeconfig.json
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\bin\Release\netcoreapp3.1\SalaryCalculation.runtimeconfig.dev.json
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\bin\Release\netcoreapp3.1\SalaryCalculation.dll
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\bin\Release\netcoreapp3.1\SalaryCalculation.pdb
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\bin\Release\netcoreapp3.1\SalaryCalculation.Library.dll
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\bin\Release\netcoreapp3.1\SalaryCalculation.Library.pdb
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\obj\Release\netcoreapp3.1\SalaryCalculation.csprojAssemblyReference.cache
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\obj\Release\netcoreapp3.1\SalaryCalculation.AssemblyInfoInputs.cache
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\obj\Release\netcoreapp3.1\SalaryCalculation.AssemblyInfo.cs
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\obj\Release\netcoreapp3.1\SalaryCalculation.csproj.CoreCompileInputs.cache
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\obj\Release\netcoreapp3.1\SalaryCalculation.csproj.CopyComplete
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\obj\Release\netcoreapp3.1\SalaryCalculation.dll
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\obj\Release\netcoreapp3.1\SalaryCalculation.pdb
+C:\MyProgramms\SalaryCalculation\SalaryCalculation\obj\Release\netcoreapp3.1\SalaryCalculation.genruntimeconfig.cache
