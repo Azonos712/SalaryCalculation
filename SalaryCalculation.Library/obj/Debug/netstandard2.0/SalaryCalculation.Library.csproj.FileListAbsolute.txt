@@ -7,3 +7,13 @@ C:\MyProgramms\SalaryCalculation\SalaryCalculation.Library\bin\Debug\netstandard
 C:\MyProgramms\SalaryCalculation\SalaryCalculation.Library\bin\Debug\netstandard2.0\SalaryCalculation.Library.pdb
 C:\MyProgramms\SalaryCalculation\SalaryCalculation.Library\obj\Debug\netstandard2.0\SalaryCalculation.Library.dll
 C:\MyProgramms\SalaryCalculation\SalaryCalculation.Library\obj\Debug\netstandard2.0\SalaryCalculation.Library.pdb
+C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Library\bin\Debug\netstandard2.0\SalaryCalculation.Library.deps.json
+C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Library\bin\Debug\netstandard2.0\SalaryCalculation.Library.dll
+C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Library\bin\Debug\netstandard2.0\SalaryCalculation.Library.pdb
+C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Library\obj\Debug\netstandard2.0\SalaryCalculation.Library.csproj.AssemblyReference.cache
+C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Library\obj\Debug\netstandard2.0\SalaryCalculation.Library.GeneratedMSBuildEditorConfig.editorconfig
+C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Library\obj\Debug\netstandard2.0\SalaryCalculation.Library.AssemblyInfoInputs.cache
+C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Library\obj\Debug\netstandard2.0\SalaryCalculation.Library.AssemblyInfo.cs
+C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Library\obj\Debug\netstandard2.0\SalaryCalculation.Library.csproj.CoreCompileInputs.cache
+C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Library\obj\Debug\netstandard2.0\SalaryCalculation.Library.dll
+C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Library\obj\Debug\netstandard2.0\SalaryCalculation.Library.pdb
