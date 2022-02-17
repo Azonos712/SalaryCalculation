@@ -2,23 +2,18 @@
 using System.IO;
 using System.Text;
 
-namespace SalaryCalculation.Library.Storage
+namespace SalaryCalculation.Library.Storage.FileStorage
 {
-    public class FilesRepository : IRepository
+    public class FileRepositoryOfAllEmployees : BaseFileRepository, IEmployeeRepository
     {
-        public FilesInfo FilesInfo { get; private set; }
-
-        public FilesRepository(string companyName)
-        {
-            FilesInfo = new FilesInfo(Directory.GetCurrentDirectory() + "\\" + companyName);
-        }
+        public FileRepositoryOfAllEmployees(FilesInfo filesInfo) : base(filesInfo) { }
 
         public bool AddEmployee(Employee e)
         {
             if (e == null)
                 return false;
 
-            if (FindEmployeeBySurname(e.Surname) != null)
+            if (SearchEmployeeBySurname(e.Surname) != null)
                 return false;
 
             using (StreamWriter sw = new StreamWriter(FilesInfo.PathToAllEmployees, true, Encoding.Default))
@@ -29,11 +24,11 @@ namespace SalaryCalculation.Library.Storage
             return true;
         }
 
-        public Employee FindEmployeeBySurname(string name)
+        public Employee SearchEmployeeBySurname(string name)
         {
             string line;
 
-            using (StreamReader sr = new StreamReader(FilesInfo.PathToAllEmployees,Encoding.Default))
+            using (StreamReader sr = new StreamReader(FilesInfo.PathToAllEmployees, Encoding.Default))
             {
                 while ((line = sr.ReadLine()) != null)
                 {

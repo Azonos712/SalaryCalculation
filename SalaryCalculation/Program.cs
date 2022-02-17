@@ -6,7 +6,7 @@
         {
             MenuService menuService = new MenuService("SoftwareDevelopment");
 
-            menuService.Authorization();
+            menuService.Authentication();
 
             menuService.ShowMenu();
         }

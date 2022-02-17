@@ -2,9 +2,9 @@
 
 namespace SalaryCalculation.Library.Storage
 {
-    public interface IRepository
+    public interface IEmployeeRepository
     {
         bool AddEmployee(Employee e);
-        Employee FindEmployeeBySurname(string name);
+        Employee SearchEmployeeBySurname(string name);
     }
 }

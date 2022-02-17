@@ -16,9 +16,9 @@ namespace SalaryCalculation.Library.Storage
         public string PathToDirectors { get { return StorageDirectory + fileNameOfDirectors; } }
         public string PathToFreelancers { get { return StorageDirectory + fileNameOfFreelancers; } }
 
-        public FilesInfo(string defaultDirectory)
+        public FilesInfo(string companyName)
         {
-            StorageDirectory = defaultDirectory;
+            StorageDirectory = Directory.GetCurrentDirectory() + "\\" + companyName;
             CheckStorage();
         }
 

@@ -9,19 +9,19 @@ namespace SalaryCalculation.Tests
 {
     internal class JobReportsTests
     {
-        Company company = new Company("TestCompany",new FilesRepository("TestCompany"));
-        Employee worker = new Worker("иванов");
+        Company company;// = new Company("TestCompany",new FileRepositoryOfAllEmployees("TestCompany"));
+        Employee worker;// = new Worker("иванов");
 
         [Test]
         public void FindJobReportBySurnameAndExistentDate()
         {
-            Assert.IsTrue(company.FindJobReportBySurnameAndDate(worker, new DateTime(2021, 1, 1)) != null);
+            Assert.IsTrue(company.SearchJobReportBySurnameAndDate(worker, new DateTime(2021, 1, 1)) != null);
         }
 
         [Test]
         public void FindJobReportBySurnameAndNonExistentDate()
         {
-            Assert.IsTrue(company.FindJobReportBySurnameAndDate(worker, new DateTime(2021, 2, 1)) == null);
+            Assert.IsTrue(company.SearchJobReportBySurnameAndDate(worker, new DateTime(2021, 2, 1)) == null);
         }
 
         [Test]

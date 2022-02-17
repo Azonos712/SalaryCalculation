@@ -1,19 +1,23 @@
 using NUnit.Framework;
 using SalaryCalculation.Library.Storage;
+using SalaryCalculation.Library.Storage.FileStorage;
 using System.IO;
 
 namespace SalaryCalculation.Tests
 {
-    public class CompanyTests
+    public class EmployeesFilesManageTests
     {
-        private FilesRepository _filesRepository;
+        private FilesInfo _fileInfo;
         private Company _company;
 
         [SetUp]
         public void SetUp()
         {
-            _filesRepository = new FilesRepository("TestCompany");
-            _company = new Company("TestCompany", _filesRepository);
+            _fileInfo = new FilesInfo("TestCompany");
+            _company = new Company(
+                "TestCompany",
+                new FileRepositoryOfAllEmployees(_fileInfo),
+                new FileRepositoryOfJobReports(_fileInfo));
         }
 
         [Test, Order(1)]
@@ -50,7 +54,7 @@ namespace SalaryCalculation.Tests
         public void FindExistingEmployeeBySurname(string surname, string role)
         {
             _company.AddEmployeeToCompany(surname, role);
-            var e = _company.FindEmployeeBySurname(surname);
+            var e = _company.SearchEmployeeBySurname(surname);
             Assert.AreEqual(e?.Surname, surname);
             Assert.AreEqual(e?.GetRole(), role);
         }
@@ -63,7 +67,7 @@ namespace SalaryCalculation.Tests
         [TestCase("сидоров", "фрилансер")]
         public void FindNonExistingEmployeeBySurname(string surname, string role)
         {
-            var e = _company.FindEmployeeBySurname(surname);
+            var e = _company.SearchEmployeeBySurname(surname);
             Assert.AreEqual(e?.Surname, null);
             Assert.AreEqual(e?.GetRole(), null);
         }
@@ -72,8 +76,8 @@ namespace SalaryCalculation.Tests
         [TearDown]
         public void CleanFiles()
         {
-            if (Directory.Exists(_filesRepository.FilesInfo.StorageDirectory))
-                Directory.Delete(_filesRepository.FilesInfo.StorageDirectory, true);
+            if (Directory.Exists(_fileInfo.StorageDirectory))
+                Directory.Delete(_fileInfo.StorageDirectory, true);
         }
     }
 }
