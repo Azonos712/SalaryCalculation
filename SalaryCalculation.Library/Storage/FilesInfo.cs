@@ -3,7 +3,7 @@ using System.IO;
 
 namespace SalaryCalculation.Library.Storage
 {
-    internal class FilesInfo
+    public class FilesInfo
     {
         public string StorageDirectory { get; private set; }
         private readonly string fileNameOfAllEmployees = "\\listOfAllEmployees.csv";
@@ -36,7 +36,7 @@ namespace SalaryCalculation.Library.Storage
         private void CheckFile(string path)
         {
             if (!File.Exists(path))
-                File.Create(path);
+                using (FileStream fs = File.Create(path)) ;
         }
 
         public string GetPathByEmployee(Employee employee)

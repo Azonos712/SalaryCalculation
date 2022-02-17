@@ -6,11 +6,11 @@ namespace SalaryCalculation.Library.Storage
 {
     public class FilesRepository : IRepository
     {
-        private FilesInfo _filesInfo;
+        public FilesInfo FilesInfo { get; private set; }
 
         public FilesRepository(string companyName)
         {
-            _filesInfo = new FilesInfo(Directory.GetCurrentDirectory() + "\\" + companyName);
+            FilesInfo = new FilesInfo(Directory.GetCurrentDirectory() + "\\" + companyName);
         }
 
         public bool AddEmployee(Employee e)
@@ -21,7 +21,7 @@ namespace SalaryCalculation.Library.Storage
             if (FindEmployeeBySurname(e.Surname) != null)
                 return false;
 
-            using (StreamWriter sw = new StreamWriter(_filesInfo.PathToAllEmployees, true, Encoding.Default))
+            using (StreamWriter sw = new StreamWriter(FilesInfo.PathToAllEmployees, true, Encoding.Default))
             {
                 sw.WriteLine(e.ToString());
             }
@@ -33,7 +33,7 @@ namespace SalaryCalculation.Library.Storage
         {
             string line;
 
-            using (StreamReader sr = new StreamReader(_filesInfo.PathToAllEmployees))
+            using (StreamReader sr = new StreamReader(FilesInfo.PathToAllEmployees,Encoding.Default))
             {
                 while ((line = sr.ReadLine()) != null)
                 {
@@ -47,6 +47,6 @@ namespace SalaryCalculation.Library.Storage
             return null;
         }
 
-        
+
     }
 }

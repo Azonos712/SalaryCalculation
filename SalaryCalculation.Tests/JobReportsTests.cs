@@ -9,7 +9,7 @@ namespace SalaryCalculation.Tests
 {
     internal class JobReportsTests
     {
-        Company company = new Company("TestCompany");
+        Company company = new Company("TestCompany",new FilesRepository("TestCompany"));
         Employee worker = new Worker("иванов");
 
         [Test]

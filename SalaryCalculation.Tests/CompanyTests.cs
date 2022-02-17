@@ -1,55 +1,79 @@
 using NUnit.Framework;
-using SalaryCalculation.Library;
-using SalaryCalculation.Library.Model;
 using SalaryCalculation.Library.Storage;
-using System;
+using System.IO;
 
 namespace SalaryCalculation.Tests
 {
     public class CompanyTests
     {
-        Company company = new Company("TestCompany", new FilesRepository("TestCompany"));
-        //Employee worker = new Worker("иванов");
-        //Employee director = new Director("афанасьев");
-        //Employee freelancer = new Freelancer("акопян");
+        private FilesRepository _filesRepository;
+        private Company _company;
 
-        //[SetUp]
-        //public void Setup()
-        //{
-        //    company = new Company("TestCompany");
-        //    worker = new Worker("иванов");
-        //    director = new Director("афанасьев");
-        //    freelancer = new Freelancer("акопян");
-        //}
-
-        [TestCase("", null, null)]
-        [TestCase("архинян", null, null)]
-        [TestCase("попов", "попов", "руководитель")]
-        [TestCase("аксеньев", "аксеньев", "сотрудник")]
-        [TestCase("сидоров", "сидоров", "фрилансер")]
-        public void FindEmployeeBySurname(string surname, string realSurname, string role)
+        [SetUp]
+        public void SetUp()
         {
-            var e = company.FindEmployeeBySurname(surname);
-            Assert.AreEqual(e?.Surname, realSurname);
+            _filesRepository = new FilesRepository("TestCompany");
+            _company = new Company("TestCompany", _filesRepository);
+        }
+
+        [Test, Order(1)]
+        [TestCase(null, null, false)]
+        [TestCase("архинян", null, false)]
+        [TestCase("попов", "сотрудник", true)]
+        [TestCase("алексеев", "руководитель", true)]
+        [TestCase("стейхем", "фрилансер", true)]
+        public void CreateEmployeeByRole(string surname, string role, bool result)
+        {
+            Assert.AreEqual(_company.AddEmployeeToCompany(surname, role), result);
+        }
+
+        [Test, Order(2)]
+        [TestCase("попов", "сотрудник")]
+        public void CreateTwoEqualsEmployees(string surname, string role)
+        {
+            Assert.AreEqual(_company.AddEmployeeToCompany(surname, role), true);
+            Assert.AreEqual(_company.AddEmployeeToCompany(surname, role), false);
+        }
+
+        [Test, Order(3)]
+        [TestCase("попов", "сотрудник", "алексеев", "сотрудник")]
+        public void CreateTwoDifferentEmployees(string surname1, string role1, string surname2, string role2)
+        {
+            Assert.AreEqual(_company.AddEmployeeToCompany(surname1, role1), true);
+            Assert.AreEqual(_company.AddEmployeeToCompany(surname2, role2), true);
+        }
+
+        [Test, Order(4)]
+        [TestCase("попов", "руководитель")]
+        [TestCase("аксеньев", "сотрудник")]
+        [TestCase("сидоров", "фрилансер")]
+        public void FindExistingEmployeeBySurname(string surname, string role)
+        {
+            _company.AddEmployeeToCompany(surname, role);
+            var e = _company.FindEmployeeBySurname(surname);
+            Assert.AreEqual(e?.Surname, surname);
             Assert.AreEqual(e?.GetRole(), role);
         }
 
-        [TestCase(null, null, null)]
-        [TestCase("архинян", null, null)]
-        [TestCase("сидоров", "сотрудник", typeof(Worker))]
-        [TestCase("сидоров", "руководитель", typeof(Director))]
-        [TestCase("сидоров", "фрилансер", typeof(Freelancer))]
-        public void CreateEmployeeByRole(string surname, string role, Type type)
+        [Test, Order(4)]
+        [TestCase("", null)]
+        [TestCase("архинян", null)]
+        [TestCase("попов", "руководитель")]
+        [TestCase("аксеньев", "сотрудник")]
+        [TestCase("сидоров", "фрилансер")]
+        public void FindNonExistingEmployeeBySurname(string surname, string role)
         {
-            var e = company.CreateEmployeeByRole(surname, role);
-            Assert.AreEqual(e?.GetType(), type);
+            var e = _company.FindEmployeeBySurname(surname);
+            Assert.AreEqual(e?.Surname, null);
+            Assert.AreEqual(e?.GetRole(), null);
         }
 
-        [Test]
-        public void AddNewEmployee()
+
+        [TearDown]
+        public void CleanFiles()
         {
-            var e = company.CreateEmployeeByRole("попов", "руководитель");
-            Assert.AreEqual(company.AddNewEmployee(e), false);
+            if (Directory.Exists(_filesRepository.FilesInfo.StorageDirectory))
+                Directory.Delete(_filesRepository.FilesInfo.StorageDirectory, true);
         }
     }
 }
