@@ -13,7 +13,7 @@ namespace SalaryCalculation
 
         public MenuService(string companyName)
         {
-            _company = new Company(companyName);
+            _company = new Company(companyName, new FilesRepository(companyName));
         }
 
         public void Authorization()

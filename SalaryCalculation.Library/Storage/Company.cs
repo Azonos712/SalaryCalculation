@@ -9,16 +9,20 @@ namespace SalaryCalculation.Library.Storage
     public class Company
     {
         private readonly string _companyName;
-        private readonly FilesService _fileService;
+        private readonly IRepository _repository;
+        //private readonly FilesService _fileService;
 
-        public Company(string name)
+        public Company(string name, IRepository repository)
         {
             _companyName = name;
-            _fileService = new FilesService(_companyName);
+            _repository = repository;
+            //_fileService = new FilesService(_companyName);
         }
 
         public Employee FindEmployeeBySurname(string surname)
         {
+            return _repository.FindEmployeeBySurname(surname);
+
             string line;
             using (StreamReader sr = new StreamReader(_fileService.PathToAllEmployees))
             {
