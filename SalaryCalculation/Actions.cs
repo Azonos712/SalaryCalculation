@@ -56,7 +56,7 @@ namespace SalaryCalculation
             string role = Console.ReadLine().Trim().ToLower();
             Console.WriteLine();
 
-            if (_company.AddEmployeeToCompany(surname, role))
+            if (_company.AddEmployee(surname, role))
                 Console.WriteLine("Сотрудник добавлен.");
             else
                 Console.WriteLine("Произошла ошибка. Возможно такой сотрудник уже существует.");
@@ -71,7 +71,7 @@ namespace SalaryCalculation
         {
             Console.Write("Фамилия сотрудника для которого будут добавлены часы:");
             string surname = Console.ReadLine().Trim().ToLower();
-            Employee employee = _company.SearchEmployeeBySurname(surname);
+            Employee employee = _company.SearchEmployee(surname);
 
             if (employee != null)
                 AddHoursForEmployee(employee);
@@ -102,7 +102,7 @@ namespace SalaryCalculation
 
                 JobReport jr = new JobReport(workPerson, hours, date, description);
 
-                if (_company.AddJobReportToEmployee(_currentEmployee, jr))
+                if (_company.AddJobReport(_currentEmployee, jr))
                     Console.WriteLine("Отчёт добавлен.");
                 else
                     Console.WriteLine("Произошла ошибка. Возможно отчёт на эту дату уже был составлен.");
@@ -122,7 +122,7 @@ namespace SalaryCalculation
         {
             Console.Write("Фамилия сотрудника, чьи отчёты будут показаны:");
             string surname = Console.ReadLine().Trim().ToLower();
-            Employee employee = _company.SearchEmployeeBySurname(surname);
+            Employee employee = _company.SearchEmployee(surname);
 
             if (employee != null)
                 ShowJobReportByEmployee(employee);

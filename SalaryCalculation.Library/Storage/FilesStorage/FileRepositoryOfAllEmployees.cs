@@ -13,7 +13,7 @@ namespace SalaryCalculation.Library.Storage.FileStorage
             if (e == null)
                 return false;
 
-            if (SearchEmployeeBySurname(e.Surname) != null)
+            if (SearchEmployee(e.Surname) != null)
                 return false;
 
             using (StreamWriter sw = new StreamWriter(FilesInfo.PathToAllEmployees, true, Encoding.Default))
@@ -24,7 +24,7 @@ namespace SalaryCalculation.Library.Storage.FileStorage
             return true;
         }
 
-        public Employee SearchEmployeeBySurname(string name)
+        public Employee SearchEmployee(string name)
         {
             string line;
 

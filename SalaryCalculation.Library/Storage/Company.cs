@@ -32,24 +32,24 @@ namespace SalaryCalculation.Library.Storage
             }
         }
 
-        public bool AddEmployeeToCompany(string surname, string role)
+        public bool AddEmployee(string surname, string role)
         {
             return _employeeRep.AddEmployee(GetEmployeeByRole(surname, role));
         }
 
-        public Employee SearchEmployeeBySurname(string surname)
+        public Employee SearchEmployee(string surname)
         {
-            return _employeeRep.SearchEmployeeBySurname(surname);
+            return _employeeRep.SearchEmployee(surname);
         }
 
-        public bool AddJobReportToEmployee(Employee whoAdds, JobReport jr)
+        public bool AddJobReport(Employee whoAdds, JobReport jr)
         {
-            return _jobReportRep.AddJobReportToEmployee(whoAdds, jr);
+            return _jobReportRep.AddJobReport(whoAdds, jr);
         }
 
-        public JobReport SearchJobReportBySurnameAndDate(Employee employee, DateTime date)
+        public JobReport SearchJobReport(Employee employee, DateTime date)
         {
-            return _jobReportRep.SearchJobReportBySurnameAndDate(employee, date);
+            return _jobReportRep.SearchJobReport(employee, date);
         }
 
         public List<JobReport> GetJobReportsForPeriodByEmployee(Employee employee, DateTime startDate, DateTime endDate)

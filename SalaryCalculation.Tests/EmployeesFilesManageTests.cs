@@ -28,23 +28,23 @@ namespace SalaryCalculation.Tests
         [TestCase("стейхем", "фрилансер", true)]
         public void CreateEmployeeByRole(string surname, string role, bool result)
         {
-            Assert.AreEqual(_company.AddEmployeeToCompany(surname, role), result);
+            Assert.AreEqual(_company.AddEmployee(surname, role), result);
         }
 
         [Test, Order(2)]
         [TestCase("попов", "сотрудник")]
         public void CreateTwoEqualsEmployees(string surname, string role)
         {
-            Assert.AreEqual(_company.AddEmployeeToCompany(surname, role), true);
-            Assert.AreEqual(_company.AddEmployeeToCompany(surname, role), false);
+            Assert.AreEqual(_company.AddEmployee(surname, role), true);
+            Assert.AreEqual(_company.AddEmployee(surname, role), false);
         }
 
         [Test, Order(3)]
         [TestCase("попов", "сотрудник", "алексеев", "сотрудник")]
         public void CreateTwoDifferentEmployees(string surname1, string role1, string surname2, string role2)
         {
-            Assert.AreEqual(_company.AddEmployeeToCompany(surname1, role1), true);
-            Assert.AreEqual(_company.AddEmployeeToCompany(surname2, role2), true);
+            Assert.AreEqual(_company.AddEmployee(surname1, role1), true);
+            Assert.AreEqual(_company.AddEmployee(surname2, role2), true);
         }
 
         [Test, Order(4)]
@@ -53,8 +53,8 @@ namespace SalaryCalculation.Tests
         [TestCase("сидоров", "фрилансер")]
         public void FindExistingEmployeeBySurname(string surname, string role)
         {
-            _company.AddEmployeeToCompany(surname, role);
-            var e = _company.SearchEmployeeBySurname(surname);
+            _company.AddEmployee(surname, role);
+            var e = _company.SearchEmployee(surname);
             Assert.AreEqual(e?.Surname, surname);
             Assert.AreEqual(e?.GetRole(), role);
         }
@@ -67,7 +67,7 @@ namespace SalaryCalculation.Tests
         [TestCase("сидоров", "фрилансер")]
         public void FindNonExistingEmployeeBySurname(string surname, string role)
         {
-            var e = _company.SearchEmployeeBySurname(surname);
+            var e = _company.SearchEmployee(surname);
             Assert.AreEqual(e?.Surname, null);
             Assert.AreEqual(e?.GetRole(), null);
         }

@@ -5,7 +5,7 @@ namespace SalaryCalculation.Library.Storage
 {
     public interface IJobReportRepository
     {
-        bool AddJobReportToEmployee(Employee whoAdds, JobReport jr);
-        JobReport SearchJobReportBySurnameAndDate(Employee employee, DateTime date);
+        bool AddJobReport(Employee whoAdds, JobReport jr);
+        JobReport SearchJobReport(Employee employee, DateTime date);
     }
 }

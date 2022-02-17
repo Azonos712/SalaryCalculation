@@ -30,7 +30,7 @@ namespace SalaryCalculation
             while (true)
             {
                 var surname = Console.ReadLine().Trim().ToLower();
-                _currentEmployee = _company.SearchEmployeeBySurname(surname);
+                _currentEmployee = _company.SearchEmployee(surname);
 
                 if (_currentEmployee != null)
                     break;

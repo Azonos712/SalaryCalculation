@@ -16,5 +16,10 @@ namespace SalaryCalculation.Library.Model
             Hours = hours;
             Description = description;
         }
+
+        public override string ToString()
+        {
+            return WorkPerson.ToString() + "-" + WorkDay.ToString("MM/dd/yyyy") + "-" + Description;
+        }
     }
 }

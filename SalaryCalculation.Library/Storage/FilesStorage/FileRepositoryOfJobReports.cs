@@ -9,9 +9,15 @@ namespace SalaryCalculation.Library.Storage.FileStorage
     {
         public FileRepositoryOfJobReports(FilesInfo filesInfo) : base(filesInfo) { }
 
-        public bool AddJobReportToEmployee(Employee whoAdds, JobReport jr)
+        public bool AddJobReport(Employee whoAdds, JobReport jr)
         {
-            if (SearchJobReportBySurnameAndDate(jr.WorkPerson, jr.WorkDay) != null)
+            if (SearchJobReport(jr.WorkPerson, jr.WorkDay) != null)
+                return false;
+
+            if (DateTime.Now < jr.WorkDay)
+                return false;
+
+            if (!(whoAdds is Director) && !whoAdds.Equals(jr.WorkPerson))
                 return false;
 
             if (whoAdds is Freelancer && DateTime.Today.AddDays(-2) > jr.WorkDay)
@@ -25,7 +31,7 @@ namespace SalaryCalculation.Library.Storage.FileStorage
             return true;
         }
 
-        public JobReport SearchJobReportBySurnameAndDate(Employee employee, DateTime date)
+        public JobReport SearchJobReport(Employee employee, DateTime date)
         {
             string line;
 

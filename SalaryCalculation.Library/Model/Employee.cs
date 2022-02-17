@@ -1,6 +1,8 @@
-﻿namespace SalaryCalculation.Library.Model
+﻿using System;
+
+namespace SalaryCalculation.Library.Model
 {
-    public abstract class Employee
+    public abstract class Employee : IEquatable<Employee>
     {
         public string Surname { get; }
         public Employee(string surname)
@@ -18,5 +20,10 @@
         protected decimal CalcuclateDefaultPay(int defaultHours) => GetSalaryPerHour() * defaultHours;
         protected abstract decimal CalcuclateOverTimePay(int overTimeHours);
         public override string ToString() => Surname + "," + GetRole();
+
+        public bool Equals(Employee other)
+        {
+            return this.Surname == other.Surname && this.GetRole() == other.GetRole();
+        }
     }
 }
