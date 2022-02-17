@@ -8,7 +8,7 @@
 
         }
         public override string GetRole() => "сотрудник";
-        public override decimal GetSalaryPerHour() => monthSalary / WorkStandarts.HOURS_IN_WORK_MONTH;
+        public override decimal GetSalaryPerHour() => monthSalary / WorkStandarts.HOURS_IN_MONTH;
         public override decimal GetPaidByHours(int hours)
         {
             int overwork = hours > 160 ? hours - 160 : 0;
