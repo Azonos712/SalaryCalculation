@@ -32,7 +32,7 @@ namespace SalaryCalculation.Tests
             _company.AddEmployee("попов", "сотрудник");
             _company.AddEmployee("алексеев", "фрилансер");
             _company.AddEmployee("иванов", "руководитель");
-            var test = new JobReport(w, 8, DateTime.Now.AddDays(-3), "work1");
+
             _company.AddJobReport(w, new JobReport(w, 8, DateTime.Now.AddDays(-3), "work1"));
             _company.AddJobReport(w, new JobReport(w, 9, DateTime.Now.AddDays(-5), "work2"));
 
@@ -42,7 +42,7 @@ namespace SalaryCalculation.Tests
             _company.AddJobReport(d, new JobReport(d, 5, DateTime.Now.AddDays(-4), "work5"));
             _company.AddJobReport(d, new JobReport(d, 7, DateTime.Now.AddDays(-6), "work6"));
 
-            _company.AddJobReport(d, new JobReport(w, 8, DateTime.Now.AddDays(-3), "work7"));
+            _company.AddJobReport(d, new JobReport(w, 8, DateTime.Now.AddDays(-7), "work7"));
             _company.AddJobReport(d, new JobReport(f, 10, DateTime.Now.AddDays(-5), "work8"));
         }
 
@@ -77,30 +77,54 @@ namespace SalaryCalculation.Tests
         {
             Assert.AreEqual(_company.AddJobReport(whoAdds, report), false);
         }
-
-        //тест на добавление часов другим сотрудникам
-        [Test]
-        public void FindJobReportBySurnameAndExistingtDate()
+        public static IEnumerable<TestCaseData> CorrectListOfSearchJobReport()
         {
-            //Assert.IsTrue(_company.SearchJobReportBySurnameAndDate(w, new DateTime(2021, 1, 1)) != null);
+            yield return new TestCaseData(new Worker("попов"), DateTime.Now.AddDays(-3));
+            yield return new TestCaseData(new Freelancer("алексеев"), DateTime.Now.AddDays(-2));
+            yield return new TestCaseData(new Director("иванов"), DateTime.Now.AddDays(-4));
         }
 
-        [Test]
-        public void FindJobReportBySurnameAndNonExistentDate()
+        [TestCaseSource(nameof(CorrectListOfSearchJobReport))]
+        public void CorrectSearchForJobReport(Employee employee, DateTime date)
         {
-            //Assert.IsTrue(_company.SearchJobReportBySurnameAndDate(w, new DateTime(2021, 2, 1)) == null);
+            Assert.IsTrue(_company.SearchJobReport(employee, date) != null);
         }
 
-        [Test]
-        public void GetJobReportsForPeriodByEmployee()
+        public static IEnumerable<TestCaseData> WrongListOfSearchJobReport()
         {
-            //Assert.AreEqual(_company.GetJobReportsForPeriodByEmployee(w, DateTime.Parse("01.01.2021"), DateTime.Parse("05.01.2021")).Count, 3);
+            yield return new TestCaseData(new Worker("попов"), DateTime.Now.AddDays(-25));
+            yield return new TestCaseData(new Freelancer("алексеев"), DateTime.Now.AddDays(-25));
+            yield return new TestCaseData(new Director("иванов"), DateTime.Now.AddDays(-25));
+            yield return new TestCaseData(new Worker("капонов"), DateTime.Now.AddDays(-25));
+            yield return new TestCaseData(new Director("шуфутинов"), DateTime.Now.AddDays(-25));
         }
-        [Test]
-        public void GetJobReportsForPeriodByAllEmployees()
+
+        [TestCaseSource(nameof(WrongListOfSearchJobReport))]
+        public void WrongSearchForJobReport(Employee employee, DateTime date)
         {
-            //Assert.AreEqual(_company.GetJobReportsForPeriodByAllEmployees(DateTime.Parse("01.01.2021"), DateTime.Parse("05.01.2021")).Count, 5);
+            Assert.IsTrue(_company.SearchJobReport(employee, date) == null);
         }
+
+        public static IEnumerable<TestCaseData> ListOfSearchJobReportForPeriod()
+        {
+            yield return new TestCaseData(new Worker("попов"), 3);
+            yield return new TestCaseData(new Freelancer("алексеев"), 3);
+            yield return new TestCaseData(new Director("иванов"), 2);
+            yield return new TestCaseData(new Worker("капонов"), 0);
+            yield return new TestCaseData(new Director("шуфутинов"), 0);
+        }
+
+        [TestCaseSource(nameof(ListOfSearchJobReportForPeriod))]
+        public void GetJobReportsForPeriodByEmployee(Employee employee, int numOfReports)
+        {
+            Assert.AreEqual(_company.GetJobReportsForPeriod(employee, DateTime.Now.AddDays(-30), DateTime.Now).Count, numOfReports);
+        }
+
+        //[Test]
+        //public void GetJobReportsForPeriodByAllEmployees()
+        //{
+        //    Assert.AreEqual(_company.GetJobReportsForPeriodByAllEmployees(DateTime.Parse("01.01.2021"), DateTime.Parse("05.01.2021")).Count, 5);
+        //}
 
         [TearDown]
         public void CleanFiles()

@@ -146,9 +146,10 @@ namespace SalaryCalculation
 
                 Console.WriteLine();
 
-                List<JobReport> result = _company.GetJobReportsForPeriodByEmployee(employee, startDate, endDate);
+                List<JobReport> result = _company.GetJobReportsForPeriod(employee, startDate, endDate);
 
                 Console.WriteLine($"Отчёт по сотруднику: {Utility.FirstCharToUpper(employee.Surname)} за период с {startDate:d} по {endDate:d}");
+
                 foreach (var jr in result)
                     Console.WriteLine($"{jr.WorkDay:d}, {jr.Hours} часов, {jr.Description}");
 

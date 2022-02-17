@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hbSPLo4a+wmxQ6r/PkCEDroqyrIMsCs3poJKCtQg5F4yd124S5A+4/KAicTUpmG6HFHsAvUxpvOL+C7svrBBFA==",
+  "dgSpecHash": "yMBBi9U6DzDGS9kDFwzC3adKGmfMP7rydC1+QTZVU0BD6gMLqoaujLuuZIbe7w6HCkjoCzvDeJ+NBDcKRH6VNA==",
   "success": true,
   "projectFilePath": "C:\\MyProgramms\\Tests\\SalaryCalculation\\SalaryCalculation\\SalaryCalculation.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Intel\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.21\\microsoft.netcore.app.host.win-x64.3.1.21.nupkg.sha512",
-    "C:\\Users\\Intel\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\Intel\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\Intel\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,5 +1,6 @@
 ﻿using SalaryCalculation.Library.Model;
 using System;
+using System.Collections.Generic;
 
 namespace SalaryCalculation.Library.Storage
 {
@@ -7,5 +8,6 @@ namespace SalaryCalculation.Library.Storage
     {
         bool AddJobReport(Employee whoAdds, JobReport jr);
         JobReport SearchJobReport(Employee employee, DateTime date);
+        List<JobReport> GetJobReportsForPeriod(Employee employee, DateTime startDate, DateTime endDate);
     }
 }

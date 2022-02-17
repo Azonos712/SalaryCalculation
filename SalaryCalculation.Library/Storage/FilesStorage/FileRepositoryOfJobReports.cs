@@ -1,5 +1,6 @@
 ﻿using SalaryCalculation.Library.Model;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -48,6 +49,25 @@ namespace SalaryCalculation.Library.Storage.FileStorage
             }
 
             return null;
+        }
+
+        public List<JobReport> GetJobReportsForPeriod(Employee employee, DateTime startDate, DateTime endDate)
+        {
+            var jobReports = new List<JobReport>();
+            string line;
+
+            using (StreamReader sr = new StreamReader(FilesInfo.GetPathByEmployee(employee)))
+            {
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] sLine = line.Split(',');
+                    if (startDate <= DateTime.Parse(sLine[0]) && DateTime.Parse(sLine[0]) <= endDate)
+                        if (sLine[1] == employee.Surname)
+                            jobReports.Add(new JobReport(employee, byte.Parse(sLine[2]), DateTime.Parse(sLine[0]), sLine[3]));
+                }
+            }
+
+            return jobReports;
         }
     }
 }
