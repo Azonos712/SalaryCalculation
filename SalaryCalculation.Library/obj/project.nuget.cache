@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AHksvBDFFvBfoSTDZsw7+Wxxs8U3hIMkO3n4No+NzH6NnvrkxHN9g9si16OX52HKJLWj62JJBBedfAHJfConRw==",
+  "dgSpecHash": "nvuGnRfgMZHJObYGSHElO3SXV+sHrvYoBvq01fQEBsmjK2tX6Ef+7iNSbxbywMh85IZnD79ut30zCztWObzHJQ==",
   "success": true,
-  "projectFilePath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj",
+  "projectFilePath": "C:\\MyProgramms\\Tests\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Intel\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Intel\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

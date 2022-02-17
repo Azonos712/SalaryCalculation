@@ -1,0 +1,3 @@
+is_global = true
+build_property.RootNamespace = SalaryCalculation.Tests
+build_property.ProjectDir = C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\

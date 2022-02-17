@@ -11,9 +11,9 @@ namespace SalaryCalculation
         private Employee _currentEmployee;
         private Actions _actions;
 
-        public MenuService(string name)
+        public MenuService(string companyName)
         {
-            _company = new Company(name);
+            _company = new Company(companyName);
         }
 
         public void Authorization()

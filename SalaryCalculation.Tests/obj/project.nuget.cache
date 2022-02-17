@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9K/q7WA+ZYpYq6UsIKVtUgVdEK8sD9yHdNIclVUDseUOikbBj6jw9PrCZKglZiCUQvM2pGR0a3h090j7yvsTxQ==",
+  "dgSpecHash": "Oou7BLysI7ovjb9K/Jwq5XDxmASD2oeSVRgJxn3MjANTALH4+wDMvs999ismcuwhowIKs4Xhctt1n72G67tQTg==",
   "success": true,
-  "projectFilePath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Tests\\SalaryCalculation.Tests.csproj",
+  "projectFilePath": "C:\\MyProgramms\\Tests\\SalaryCalculation\\SalaryCalculation.Tests\\SalaryCalculation.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Intel\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",
     "C:\\Users\\Intel\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
@@ -66,7 +66,10 @@
     "C:\\Users\\Intel\\.nuget\\packages\\system.xml.xdocument\\4.0.11\\system.xml.xdocument.4.0.11.nupkg.sha512",
     "C:\\Users\\Intel\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Intel\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
-    "C:\\Users\\Intel\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\Intel\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\Intel\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Intel\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Intel\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
   ],
   "logs": []
 }

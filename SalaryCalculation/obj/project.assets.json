@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation\\SalaryCalculation.csproj",
+      "projectUniqueName": "C:\\MyProgramms\\Tests\\SalaryCalculation\\SalaryCalculation\\SalaryCalculation.csproj",
       "projectName": "SalaryCalculation",
-      "projectPath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation\\SalaryCalculation.csproj",
+      "projectPath": "C:\\MyProgramms\\Tests\\SalaryCalculation\\SalaryCalculation\\SalaryCalculation.csproj",
       "packagesPath": "C:\\Users\\Intel\\.nuget\\packages\\",
-      "outputPath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation\\obj\\",
+      "outputPath": "C:\\MyProgramms\\Tests\\SalaryCalculation\\SalaryCalculation\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Intel\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj": {
-              "projectPath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj"
+            "C:\\MyProgramms\\Tests\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj": {
+              "projectPath": "C:\\MyProgramms\\Tests\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj"
             }
           }
         }
@@ -78,12 +78,30 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[3.1.10, 3.1.10]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.21, 3.1.21]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[3.1.0, 3.1.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[3.1.0, 3.1.0]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200-preview.22055.15\\RuntimeIdentifierGraph.json"
       }
     }
   }

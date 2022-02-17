@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj": {}
+    "C:\\MyProgramms\\Tests\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj": {}
   },
   "projects": {
-    "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj": {
+    "C:\\MyProgramms\\Tests\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj",
+        "projectUniqueName": "C:\\MyProgramms\\Tests\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj",
         "projectName": "SalaryCalculation.Library",
-        "projectPath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj",
+        "projectPath": "C:\\MyProgramms\\Tests\\SalaryCalculation\\SalaryCalculation.Library\\SalaryCalculation.Library.csproj",
         "packagesPath": "C:\\Users\\Intel\\.nuget\\packages\\",
-        "outputPath": "C:\\MyProgramms\\SalaryCalculation\\SalaryCalculation.Library\\obj\\",
+        "outputPath": "C:\\MyProgramms\\Tests\\SalaryCalculation\\SalaryCalculation.Library\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Intel\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -57,7 +57,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200-preview.22055.15\\RuntimeIdentifierGraph.json"
         }
       }
     }
