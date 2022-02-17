@@ -1,34 +1,52 @@
 ﻿using SalaryCalculation.Library.Model;
 using System.IO;
+using System.Text;
 
 namespace SalaryCalculation.Library.Storage
 {
     public class FilesRepository : IRepository
     {
-        FilesInfo _filesInfo;
+        private FilesInfo _filesInfo;
+
         public FilesRepository(string companyName)
         {
             _filesInfo = new FilesInfo(Directory.GetCurrentDirectory() + "\\" + companyName);
         }
 
-        public Employee FindEmployeeBySurname(string name)
+        public bool AddEmployee(Employee e)
         {
-            throw new System.NotImplementedException();
+            if (e == null)
+                return false;
+
+            if (FindEmployeeBySurname(e.Surname) != null)
+                return false;
+
+            using (StreamWriter sw = new StreamWriter(_filesInfo.PathToAllEmployees, true, Encoding.Default))
+            {
+                sw.WriteLine(e.ToString());
+            }
+
+            return true;
         }
 
-        public string GetPathByEmployee(Employee employee)
+        public Employee FindEmployeeBySurname(string name)
         {
-            switch (employee.GetRole())
+            string line;
+
+            using (StreamReader sr = new StreamReader(_filesInfo.PathToAllEmployees))
             {
-                case "сотрудник":
-                    return PathToWorkers;
-                case "руководитель":
-                    return PathToDirectors;
-                case "фрилансер":
-                    return PathToFreelancers;
-                default:
-                    return null;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] sLine = line.Split(',');
+
+                    if (sLine[0] == name)
+                        return Company.GetEmployeeByRole(sLine[0], sLine[1]);
+                }
             }
+
+            return null;
         }
+
+        
     }
 }

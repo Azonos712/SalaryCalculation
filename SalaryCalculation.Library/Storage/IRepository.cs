@@ -1,12 +1,10 @@
 ﻿using SalaryCalculation.Library.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SalaryCalculation.Library.Storage
 {
     public interface IRepository
     {
+        bool AddEmployee(Employee e);
         Employee FindEmployeeBySurname(string name);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using SalaryCalculation.Library.Model;
+using System.IO;
 
 namespace SalaryCalculation.Library.Storage
 {
@@ -36,6 +37,21 @@ namespace SalaryCalculation.Library.Storage
         {
             if (!File.Exists(path))
                 File.Create(path);
+        }
+
+        public string GetPathByEmployee(Employee employee)
+        {
+            switch (employee.GetRole())
+            {
+                case "сотрудник":
+                    return PathToWorkers;
+                case "руководитель":
+                    return PathToDirectors;
+                case "фрилансер":
+                    return PathToFreelancers;
+                default:
+                    return null;
+            }
         }
     }
 }

@@ -10,34 +10,14 @@ namespace SalaryCalculation.Library.Storage
     {
         private readonly string _companyName;
         private readonly IRepository _repository;
-        //private readonly FilesService _fileService;
 
         public Company(string name, IRepository repository)
         {
             _companyName = name;
             _repository = repository;
-            //_fileService = new FilesService(_companyName);
         }
 
-        public Employee FindEmployeeBySurname(string surname)
-        {
-            return _repository.FindEmployeeBySurname(surname);
-
-            string line;
-            using (StreamReader sr = new StreamReader(_fileService.PathToAllEmployees))
-            {
-                while ((line = sr.ReadLine()) != null)
-                {
-                    string[] sLine = line.Split(',');
-
-                    if (sLine[0] == surname)
-                        return CreateEmployeeByRole(sLine[0], sLine[1]);
-                }
-            }
-            return null;
-        }
-
-        public Employee CreateEmployeeByRole(string surname, string role)
+        public static Employee GetEmployeeByRole(string surname, string role)
         {
             switch (role)
             {
@@ -52,20 +32,14 @@ namespace SalaryCalculation.Library.Storage
             }
         }
 
-        public bool AddNewEmployee(Employee e)
+        public bool AddEmployeeToCompany(string surname, string role)
         {
-            if (e == null)
-                return false;
+            return _repository.AddEmployee(GetEmployeeByRole(surname, role));
+        }
 
-            if (FindEmployeeBySurname(e.Surname) != null)
-                return false;
-
-            using (StreamWriter sw = new StreamWriter(_fileService.PathToAllEmployees, true, Encoding.Default))
-            {
-                sw.WriteLine(e.ToString());
-            }
-
-            return true;
+        public Employee FindEmployeeBySurname(string surname)
+        {
+            return _repository.FindEmployeeBySurname(surname);
         }
 
         public JobReport FindJobReportBySurnameAndDate(Employee employee, DateTime date)

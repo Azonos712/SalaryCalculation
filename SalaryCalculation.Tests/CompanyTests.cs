@@ -8,7 +8,7 @@ namespace SalaryCalculation.Tests
 {
     public class CompanyTests
     {
-        Company company = new Company("TestCompany");
+        Company company = new Company("TestCompany", new FilesRepository("TestCompany"));
         //Employee worker = new Worker("иванов");
         //Employee director = new Director("афанасьев");
         //Employee freelancer = new Freelancer("акопян");
