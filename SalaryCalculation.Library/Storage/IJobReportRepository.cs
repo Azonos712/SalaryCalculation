@@ -9,5 +9,6 @@ namespace SalaryCalculation.Library.Storage
         bool AddJobReport(Employee whoAdds, JobReport jr);
         JobReport SearchJobReport(Employee employee, DateTime date);
         List<JobReport> GetJobReportsForPeriod(Employee employee, DateTime startDate, DateTime endDate);
+        List<JobReport> GetJobReportsForPeriodByAllEmployees(DateTime startDate, DateTime endDate);
     }
 }

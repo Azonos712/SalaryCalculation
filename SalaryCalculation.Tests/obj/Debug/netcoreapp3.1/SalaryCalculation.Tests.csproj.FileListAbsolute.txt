@@ -100,13 +100,14 @@ C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcore
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.pdb
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\nunit.engine.dll
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\nunit.engine.api.dll
+C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\nunit.engine.core.dll
+C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\testcentric.engine.metadata.dll
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\SalaryCalculation.Tests.deps.json
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\SalaryCalculation.Tests.runtimeconfig.json
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\SalaryCalculation.Tests.runtimeconfig.dev.json
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\SalaryCalculation.Tests.dll
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\SalaryCalculation.Tests.pdb
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.CodeCoverage.Shim.dll
-C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\Microsoft.DotNet.InternalAbstractions.dll
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.CoreUtilities.dll
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\Microsoft.TestPlatform.PlatformAbstractions.dll
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
@@ -118,7 +119,6 @@ C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcore
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\nunit.framework.dll
-C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\cs\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
 C:\MyProgramms\Tests\SalaryCalculation\SalaryCalculation.Tests\bin\Debug\netcoreapp3.1\de\Microsoft.TestPlatform.CoreUtilities.resources.dll

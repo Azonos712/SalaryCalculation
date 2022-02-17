@@ -59,17 +59,7 @@ namespace SalaryCalculation.Library.Storage
 
         public List<JobReport> GetJobReportsForPeriodByAllEmployees(DateTime startDate, DateTime endDate)
         {
-            var jobReports = new List<JobReport>();
-            string line;
-            //using (StreamReader sr = new StreamReader(_fileService.PathToAllEmployees))
-            //{
-            //    while ((line = sr.ReadLine()) != null)
-            //    {
-            //        string[] sLine = line.Split(',');
-            //        jobReports.AddRange(GetJobReportsForPeriodByEmployee(CreateEmployeeByRole(sLine[0], sLine[1]), startDate, endDate));
-            //    }
-            //}
-            return jobReports;
+            return _jobReportRep.GetJobReportsForPeriodByAllEmployees(startDate,endDate);
         }
     }
 }

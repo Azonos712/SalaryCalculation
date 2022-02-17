@@ -120,11 +120,11 @@ namespace SalaryCalculation.Tests
             Assert.AreEqual(_company.GetJobReportsForPeriod(employee, DateTime.Now.AddDays(-30), DateTime.Now).Count, numOfReports);
         }
 
-        //[Test]
-        //public void GetJobReportsForPeriodByAllEmployees()
-        //{
-        //    Assert.AreEqual(_company.GetJobReportsForPeriodByAllEmployees(DateTime.Parse("01.01.2021"), DateTime.Parse("05.01.2021")).Count, 5);
-        //}
+        [Test]
+        public void GetJobReportsForPeriodByAllEmployees()
+        {
+            Assert.AreEqual(_company.GetJobReportsForPeriodByAllEmployees(DateTime.Now.AddDays(-30), DateTime.Now).Count, 8);
+        }
 
         [TearDown]
         public void CleanFiles()

@@ -107,11 +107,11 @@
             },
             "NUnit": {
               "target": "Package",
-              "version": "[3.12.0, )"
+              "version": "[3.13.2, )"
             },
             "NUnit3TestAdapter": {
               "target": "Package",
-              "version": "[3.16.1, )"
+              "version": "[4.2.1, )"
             }
           },
           "imports": [

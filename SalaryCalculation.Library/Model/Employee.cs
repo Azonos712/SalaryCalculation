@@ -4,7 +4,7 @@ namespace SalaryCalculation.Library.Model
 {
     public abstract class Employee : IEquatable<Employee>
     {
-        public string Surname { get; }
+        public string Surname { get; private set; }
         public Employee(string surname)
         {
             Surname = surname;

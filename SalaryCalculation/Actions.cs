@@ -197,6 +197,5 @@ namespace SalaryCalculation
         }
 
         private void Exit() => Environment.Exit(0);
-
     }
 }

@@ -69,5 +69,22 @@ namespace SalaryCalculation.Library.Storage.FileStorage
 
             return jobReports;
         }
+
+        public List<JobReport> GetJobReportsForPeriodByAllEmployees(DateTime startDate, DateTime endDate)
+        {
+            var jobReports = new List<JobReport>();
+            string line;
+
+            using (StreamReader sr = new StreamReader(FilesInfo.PathToAllEmployees))
+            {
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] sLine = line.Split(',');
+                    jobReports.AddRange(GetJobReportsForPeriod(Company.GetEmployeeByRole(sLine[0], sLine[1]), startDate, endDate));
+                }
+            }
+
+            return jobReports;
+        }
     }
 }
